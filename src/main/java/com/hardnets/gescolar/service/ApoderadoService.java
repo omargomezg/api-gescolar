@@ -5,5 +5,6 @@ import com.hardnets.gescolar.domain.Apoderado;
 import java.util.List;
 
 public interface ApoderadoService {
-    public List<Apoderado> apoderadoList();
+    List<Apoderado> apoderadoList();
+    void apoderadoDelete(String Rut);
 }

@@ -1,2 +1,2 @@
 # api-gescolar
-Api de servicios
+Api Rest de servicios

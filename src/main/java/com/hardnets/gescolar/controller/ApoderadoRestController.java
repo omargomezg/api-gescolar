@@ -37,7 +37,8 @@ public class ApoderadoRestController {
     }
 
     @DeleteMapping("apoderado/{id}")
-    boolean deteleItem(@PathVariable int id) {
-        return id == 1 ? true : false;
+    boolean deteleItem(@PathVariable String id) {
+        apoderadoService.apoderadoDelete(id);
+        return id.equals("140812269");
     }
 }
