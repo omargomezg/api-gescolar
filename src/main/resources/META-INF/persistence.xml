@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<persistence version="2.1"
+             xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+    <persistence-unit name="gescolar">
+        <class>com.hardnets.gescolar.entity.AlumnoClaseEntity</class>
+        <class>com.hardnets.gescolar.entity.ColegiosEntity</class>
+        <class>com.hardnets.gescolar.entity.CursosEntity</class>
+        <class>com.hardnets.gescolar.entity.DescuentosEntity</class>
+        <class>com.hardnets.gescolar.entity.LogAlumnoEntity</class>
+        <class>com.hardnets.gescolar.entity.LogPagoEntity</class>
+        <class>com.hardnets.gescolar.entity.LogsEntity</class>
+        <class>com.hardnets.gescolar.entity.MenuEntity</class>
+        <class>com.hardnets.gescolar.entity.ParametrosEntity</class>
+        <class>com.hardnets.gescolar.entity.PlantillaCorreoEntity</class>
+        <class>com.hardnets.gescolar.entity.RecuperarClaveEntity</class>
+        <class>com.hardnets.gescolar.entity.RegionEntity</class>
+        <class>com.hardnets.gescolar.entity.ServiciosEntity</class>
+        <class>com.hardnets.gescolar.entity.UsuariosEntity</class>
+        <class>com.hardnets.gescolar.entity.AlumnoEntity</class>
+        <class>com.hardnets.gescolar.entity.BoletaCompromisosEntity</class>
+        <class>com.hardnets.gescolar.entity.BoletaServiciosEntity</class>
+        <class>com.hardnets.gescolar.entity.ClaseEntity</class>
+        <class>com.hardnets.gescolar.entity.ColegiaturaEntity</class>
+        <class>com.hardnets.gescolar.entity.CompromisoPagoEntity</class>
+        <class>com.hardnets.gescolar.entity.ComunaEntity</class>
+        <class>com.hardnets.gescolar.entity.DescuentoAlumnoEntity</class>
+        <class>com.hardnets.gescolar.entity.DetalleBoletaEntity</class>
+        <class>com.hardnets.gescolar.entity.DetalleColegiaturaEntity</class>
+        <class>com.hardnets.gescolar.entity.DomicilioEntity</class>
+        <class>com.hardnets.gescolar.entity.FamiliaresEntity</class>
+        <class>com.hardnets.gescolar.entity.GrupoFamiliarEntity</class>
+        <class>com.hardnets.gescolar.entity.PostulacionEntity</class>
+        <class>com.hardnets.gescolar.entity.ProvinciaEntity</class>
+        <class>com.hardnets.gescolar.entity.TelFamiliarEntity</class>
+        <class>com.hardnets.gescolar.entity.TelefonosEntity</class>
+        <class>com.hardnets.gescolar.entity.ErroresEntity</class>
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://LAPTOP-9T8FEB81\MSSQLSERVER01;database=kimeltu"/>
+            <property name="javax.persistence.jdbc.user" value="user_kim"/>
+            <property name="javax.persistence.jdbc.password" value="samsung"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="toplink.jdbc.url" value="jdbc:sqlserver://LAPTOP-9T8FEB81\MSSQLSERVER01;database=kimeltu"/>
+            <property name="toplink.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+            <property name="hibernate.connection.url" value="jdbc:sqlserver://LAPTOP-9T8FEB81\MSSQLSERVER01;database=kimeltu"/>
+            <property name="hibernate.connection.driver_class" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+            <property name="openjpa.ConnectionURL" value="jdbc:sqlserver://LAPTOP-9T8FEB81\MSSQLSERVER01;database=kimeltu"/>
+            <property name="openjpa.ConnectionDriverName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+            <property name="eclipselink.jdbc.url" value="jdbc:sqlserver://LAPTOP-9T8FEB81\MSSQLSERVER01;database=kimeltu"/>
+            <property name="eclipselink.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+        </properties>
+    </persistence-unit>
+</persistence>
