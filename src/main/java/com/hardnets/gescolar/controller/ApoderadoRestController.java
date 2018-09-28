@@ -3,7 +3,6 @@ package com.hardnets.gescolar.controller;
 import com.hardnets.gescolar.domain.Apoderado;
 import com.hardnets.gescolar.domain.UserModel;
 import com.hardnets.gescolar.service.ApoderadoService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,8 +10,11 @@ import java.util.List;
 @RestController
 public class ApoderadoRestController {
 
-    @Autowired
     private ApoderadoService apoderadoService;
+
+    public ApoderadoRestController(ApoderadoService apoderadoService) {
+        this.apoderadoService = apoderadoService;
+    }
 
     @GetMapping("/apoderado")
     List<Apoderado> showAll() {

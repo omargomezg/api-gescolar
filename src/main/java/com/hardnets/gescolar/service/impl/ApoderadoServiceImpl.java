@@ -2,11 +2,21 @@ package com.hardnets.gescolar.service.impl;
 
 import com.hardnets.gescolar.domain.Apoderado;
 import com.hardnets.gescolar.domain.Telefono;
+import com.hardnets.gescolar.entity.FamiliaresEntity;
+import com.hardnets.gescolar.entity.UsuariosEntity;
+import com.hardnets.gescolar.repository.FamiliaresRepository;
 import com.hardnets.gescolar.service.ApoderadoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.ConversionService;
+import org.springframework.core.convert.TypeDescriptor;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.ArrayList;
@@ -16,21 +26,22 @@ import java.util.List;
 @Service
 public class ApoderadoServiceImpl implements ApoderadoService {
     private static Logger logger = LoggerFactory.getLogger(ApoderadoServiceImpl.class);
+    private FamiliaresRepository familiaresRepository;
+    private ConversionService conversionService;
+
+    public ApoderadoServiceImpl(FamiliaresRepository familiaresRepository,
+                                ConversionService conversionService) {
+        this.familiaresRepository = familiaresRepository;
+        this.conversionService = conversionService;
+    }
 
     @Override
     public List<Apoderado> apoderadoList() {
 
-        List<Apoderado> list = new ArrayList<>();
-
-        List<Telefono> listTel = new ArrayList<Telefono>();
-        listTel.add(new Telefono(1, "+56 9 5629 6195", "M"));
-        listTel.add(new Telefono(2, "+56 2 632 341550", "F"));
-
-        Date Nacimiento = new Date();
-        list.add(new Apoderado("2345678-9", "Juan Andrés", "Alvarado", "Soto", Nacimiento, "omar.gomez@mail.com", listTel));
-        list.add(new Apoderado("2345678-9", "Juan Andrés", "Alvarado", "Soto", Nacimiento, "omar.fdo.gomez@gmail.com", listTel));
-        logger.info("[API Gescolar] => Recupera lista de apoderados");
-        return list;
+        List<FamiliaresEntity> apoderados = familiaresRepository.findAll();
+        TypeDescriptor sourceType = TypeDescriptor.collection(List.class, TypeDescriptor.valueOf(FamiliaresEntity.class));
+        TypeDescriptor targetType = TypeDescriptor.collection(List.class, TypeDescriptor.valueOf(Apoderado.class));
+        return (List<Apoderado>) conversionService.convert(apoderados, sourceType, targetType);
 
     }
 

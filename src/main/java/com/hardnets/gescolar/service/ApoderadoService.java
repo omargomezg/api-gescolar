@@ -1,6 +1,7 @@
 package com.hardnets.gescolar.service;
 
 import com.hardnets.gescolar.domain.Apoderado;
+import com.hardnets.gescolar.entity.FamiliaresEntity;
 
 import java.util.List;
 

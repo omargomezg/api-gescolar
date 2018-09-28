@@ -1,13 +1,22 @@
 package com.hardnets.gescolar.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.Collection;
 import java.util.Objects;
 
 @Entity
 @Table(name = "TB_SCHP_Familiares", schema = "dbo", catalog = "kimeltu")
-public class FamiliaresEntity {
+@EntityListeners(AuditingEntityListener.class)
+@JsonIgnoreProperties(
+        value = {"createdAt", "updatedAt"},
+        allowGetters = true
+)
+public class FamiliaresEntity implements Serializable {
     private String famiRut;
     private String famiNombres;
     private String famiApPaterno;
