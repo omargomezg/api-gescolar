@@ -23,7 +23,7 @@ public class TelefonosEntity {
     }
 
     @Basic
-    @Column(name = "TELF_Numero")
+    @Column(name = "TELF_Numero", columnDefinition = "nvarchar(15)")
     public String getTelfNumero() {
         return telfNumero;
     }
@@ -33,7 +33,7 @@ public class TelefonosEntity {
     }
 
     @Basic
-    @Column(name = "TELF_Tipo")
+    @Column(name = "TELF_Tipo", columnDefinition = "nvarchar(50)")
     public String getTelfTipo() {
         return telfTipo;
     }

@@ -48,7 +48,7 @@ public class DetalleColegiaturaEntity {
     }
 
     @Basic
-    @Column(name = "DETC_Valor")
+    @Column(name = "DETC_Valor", columnDefinition = "smallmoney")
     public BigDecimal getDetcValor() {
         return detcValor;
     }
@@ -58,7 +58,7 @@ public class DetalleColegiaturaEntity {
     }
 
     @Basic
-    @Column(name = "DETC_Estado")
+    @Column(name = "DETC_Estado", columnDefinition = "nchar(10)")
     public String getDetcEstado() {
         return detcEstado;
     }

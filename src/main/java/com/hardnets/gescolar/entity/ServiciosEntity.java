@@ -40,7 +40,7 @@ public class ServiciosEntity {
     }
 
     @Basic
-    @Column(name = "SERV_Monto")
+    @Column(name = "SERV_Monto", columnDefinition = "money)")
     public BigDecimal getServMonto() {
         return servMonto;
     }
@@ -70,7 +70,7 @@ public class ServiciosEntity {
     }
 
     @Basic
-    @Column(name = "SERV_Observaciones")
+    @Column(name = "SERV_Observaciones", columnDefinition = "nvarchar(500)")
     public String getServObservaciones() {
         return servObservaciones;
     }

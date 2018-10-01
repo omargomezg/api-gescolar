@@ -26,7 +26,7 @@ public class CursosEntity {
     }
 
     @Basic
-    @Column(name = "CURS_Descripcion")
+    @Column(name = "CURS_Descripcion", columnDefinition = "nvarchar(50)")
     public String getCursDescripcion() {
         return cursDescripcion;
     }
@@ -50,13 +50,12 @@ public class CursosEntity {
     public byte getCursOrdenDespliegue() {
         return cursOrdenDespliegue;
     }
-
     public void setCursOrdenDespliegue(byte cursOrdenDespliegue) {
         this.cursOrdenDespliegue = cursOrdenDespliegue;
     }
 
     @Basic
-    @Column(name = "CURS_Clasificacion")
+    @Column(name = "CURS_Clasificacion", columnDefinition = "char(3)")
     public String getCursClasificacion() {
         return cursClasificacion;
     }

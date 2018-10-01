@@ -25,7 +25,7 @@ public class LogAlumnoEntity {
     }
 
     @Basic
-    @Column(name = "LALM_Tipo")
+    @Column(name = "LALM_Tipo", columnDefinition = "char(3)")
     public String getLalmTipo() {
         return lalmTipo;
     }
@@ -35,7 +35,7 @@ public class LogAlumnoEntity {
     }
 
     @Basic
-    @Column(name = "LALM_Texto")
+    @Column(name = "LALM_Texto", columnDefinition = "nvarchar(200)")
     public String getLalmTexto() {
         return lalmTexto;
     }
@@ -55,7 +55,7 @@ public class LogAlumnoEntity {
     }
 
     @Basic
-    @Column(name = "LALM_Rut")
+    @Column(name = "LALM_Rut", columnDefinition = "nvarchar(10)")
     public String getLalmRut() {
         return lalmRut;
     }

@@ -29,7 +29,7 @@ public class ClaseEntity {
     }
 
     @Basic
-    @Column(name = "CLAS_Nombre")
+    @Column(name = "CLAS_Nombre", columnDefinition = "nvarchar(50)")
     public String getClasNombre() {
         return clasNombre;
     }
@@ -39,7 +39,7 @@ public class ClaseEntity {
     }
 
     @Basic
-    @Column(name = "CLAS_Alumno")
+    @Column(name = "CLAS_Alumno", columnDefinition = "nvarchar(10)")
     public String getClasAlumno() {
         return clasAlumno;
     }

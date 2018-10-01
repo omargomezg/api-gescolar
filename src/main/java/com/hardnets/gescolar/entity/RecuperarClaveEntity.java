@@ -15,7 +15,7 @@ public class RecuperarClaveEntity {
     private UsuariosEntity tbSchmUsuariosByRclaUsuario;
 
     @Id
-    @Column(name = "RCLA_Usuario")
+    @Column(name = "RCLA_Usuario", columnDefinition = "nvarchar(10)")
     public String getRclaUsuario() {
         return rclaUsuario;
     }
@@ -35,7 +35,7 @@ public class RecuperarClaveEntity {
     }
 
     @Basic
-    @Column(name = "RCLA_Estado")
+    @Column(name = "RCLA_Estado", columnDefinition = "char(10)")
     public String getRclaEstado() {
         return rclaEstado;
     }

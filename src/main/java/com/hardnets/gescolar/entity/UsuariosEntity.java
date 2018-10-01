@@ -20,7 +20,7 @@ public class UsuariosEntity {
     private RecuperarClaveEntity tbSchmRecuperarClaveByUsurRut;
 
     @Id
-    @Column(name = "USUR_Rut")
+    @Column(name = "USUR_Rut", columnDefinition = "nvarchar(10)")
     public String getUsurRut() {
         return usurRut;
     }
@@ -30,7 +30,7 @@ public class UsuariosEntity {
     }
 
     @Basic
-    @Column(name = "USUR_Nombre")
+    @Column(name = "USUR_Nombre", columnDefinition = "varchar(300)")
     public String getUsurNombre() {
         return usurNombre;
     }
@@ -40,7 +40,7 @@ public class UsuariosEntity {
     }
 
     @Basic
-    @Column(name = "USUR_Rol")
+    @Column(name = "USUR_Rol", columnDefinition = "char(5)")
     public String getUsurRol() {
         return usurRol;
     }

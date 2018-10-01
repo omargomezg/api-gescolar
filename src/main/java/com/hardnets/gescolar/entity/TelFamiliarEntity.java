@@ -23,7 +23,7 @@ public class TelFamiliarEntity {
     }
 
     @Basic
-    @Column(name = "TELF_Familiar", insertable = false, updatable = false)
+    @Column(name = "TELF_Familiar", insertable = false, updatable = false, columnDefinition = "nvarchar(10)")
     public String getTelfFamiliar() {
         return telfFamiliar;
     }

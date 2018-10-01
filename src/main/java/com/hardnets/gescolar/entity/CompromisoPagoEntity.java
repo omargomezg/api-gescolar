@@ -44,7 +44,7 @@ public class CompromisoPagoEntity {
     }
 
     @Basic
-    @Column(name = "COMP_Alumno", insertable = false, updatable = false)
+    @Column(name = "COMP_Alumno", insertable = false, updatable = false, columnDefinition = "nvarchar(10)")
     public String getCompAlumno() {
         return compAlumno;
     }
@@ -54,7 +54,7 @@ public class CompromisoPagoEntity {
     }
 
     @Basic
-    @Column(name = "COMP_Concepto")
+    @Column(name = "COMP_Concepto", columnDefinition = "char(2)")
     public String getCompConcepto() {
         return compConcepto;
     }
@@ -64,7 +64,7 @@ public class CompromisoPagoEntity {
     }
 
     @Basic
-    @Column(name = "COMP_Valor")
+    @Column(name = "COMP_Valor", columnDefinition = "numeric(9,0)")
     public int getCompValor() {
         return compValor;
     }
@@ -74,7 +74,7 @@ public class CompromisoPagoEntity {
     }
 
     @Basic
-    @Column(name = "COMP_Tipo")
+    @Column(name = "COMP_Tipo", columnDefinition = "nchar(10)")
     public String getCompTipo() {
         return compTipo;
     }
@@ -84,7 +84,7 @@ public class CompromisoPagoEntity {
     }
 
     @Basic
-    @Column(name = "COMP_Estado")
+    @Column(name = "COMP_Estado", columnDefinition = "char(10)")
     public String getCompEstado() {
         return compEstado;
     }
@@ -114,7 +114,7 @@ public class CompromisoPagoEntity {
     }
 
     @Basic
-    @Column(name = "COMP_Detalle")
+    @Column(name = "COMP_Detalle", columnDefinition = "nvarchar(200)")
     public String getCompDetalle() {
         return compDetalle;
     }
@@ -124,7 +124,7 @@ public class CompromisoPagoEntity {
     }
 
     @Basic
-    @Column(name = "COMP_ValorFinal")
+    @Column(name = "COMP_ValorFinal", columnDefinition = "numeric(9,0)")
     public Integer getCompValorFinal() {
         return compValorFinal;
     }

@@ -35,7 +35,7 @@ public class PostulacionEntity {
     }
 
     @Basic
-    @Column(name = "POST_Year")
+    @Column(name = "POST_Year", columnDefinition = "numeric(4,0)")
     public int getPostYear() {
         return postYear;
     }
@@ -75,7 +75,7 @@ public class PostulacionEntity {
     }
 
     @Basic
-    @Column(name = "POST_Alumno")
+    @Column(name = "POST_Alumno", columnDefinition = "nvarchar(10)")
     public String getPostAlumno() {
         return postAlumno;
     }
@@ -85,7 +85,7 @@ public class PostulacionEntity {
     }
 
     @Basic
-    @Column(name = "POST_Estado")
+    @Column(name = "POST_Estado", columnDefinition = "nchar(1)")
     public String getPostEstado() {
         return postEstado;
     }
@@ -95,7 +95,7 @@ public class PostulacionEntity {
     }
 
     @Basic
-    @Column(name = "POST_Colegio")
+    @Column(name = "POST_Colegio", columnDefinition = "nvarchar(300)")
     public String getPostColegio() {
         return postColegio;
     }

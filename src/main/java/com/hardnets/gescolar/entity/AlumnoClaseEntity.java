@@ -23,7 +23,7 @@ public class AlumnoClaseEntity {
     }
 
     @Basic
-    @Column(name = "ACUR_Alumno")
+    @Column(name = "ACUR_Alumno", columnDefinition = "nvarchar(10)")
     public String getAcurAlumno() {
         return acurAlumno;
     }

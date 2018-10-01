@@ -24,7 +24,7 @@ public class DescuentoAlumnoEntity {
     }
 
     @Basic
-    @Column(name = "DSCA_Alumno")
+    @Column(name = "DSCA_Alumno", columnDefinition = "nvarchar(10)")
     public String getDscaAlumno() {
         return dscaAlumno;
     }

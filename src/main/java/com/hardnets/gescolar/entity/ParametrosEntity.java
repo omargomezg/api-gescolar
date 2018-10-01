@@ -47,7 +47,7 @@ public class ParametrosEntity {
     }
 
     @Basic
-    @Column(name = "PARA_Descripcion")
+    @Column(name = "PARA_Descripcion", columnDefinition = "nvarchar(200)")
     public String getParaDescripcion() {
         return paraDescripcion;
     }

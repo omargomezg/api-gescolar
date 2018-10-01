@@ -26,7 +26,7 @@ public class DescuentosEntity {
     }
 
     @Basic
-    @Column(name = "DESC_Descripcion")
+    @Column(name = "DESC_Descripcion", columnDefinition = "nvarchar(50)")
     public String getDescDescripcion() {
         return descDescripcion;
     }

@@ -27,7 +27,7 @@ public class DomicilioEntity {
     }
 
     @Basic
-    @Column(name = "DOMI_Direccion")
+    @Column(name = "DOMI_Direccion", columnDefinition = "nvarchar(100)")
     public String getDomiDireccion() {
         return domiDireccion;
     }
@@ -37,7 +37,7 @@ public class DomicilioEntity {
     }
 
     @Basic
-    @Column(name = "DOMI_Numero")
+    @Column(name = "DOMI_Numero", columnDefinition = "nvarchar(50)")
     public String getDomiNumero() {
         return domiNumero;
     }
@@ -47,7 +47,7 @@ public class DomicilioEntity {
     }
 
     @Basic
-    @Column(name = "DOMI_Departamento")
+    @Column(name = "DOMI_Departamento", columnDefinition = "nvarchar(50)")
     public String getDomiDepartamento() {
         return domiDepartamento;
     }
@@ -57,7 +57,7 @@ public class DomicilioEntity {
     }
 
     @Basic
-    @Column(name = "DOMI_Comuna")
+    @Column(name = "DOMI_Comuna", columnDefinition = "numeric(5,0)")
     public Integer getDomiComuna() {
         return domiComuna;
     }
@@ -67,7 +67,7 @@ public class DomicilioEntity {
     }
 
     @Basic
-    @Column(name = "DOMI_Tipo")
+    @Column(name = "DOMI_Tipo", columnDefinition = "char(10)")
     public String getDomiTipo() {
         return domiTipo;
     }

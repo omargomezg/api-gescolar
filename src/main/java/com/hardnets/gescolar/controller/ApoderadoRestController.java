@@ -16,7 +16,7 @@ public class ApoderadoRestController {
         this.apoderadoService = apoderadoService;
     }
 
-    @GetMapping("/apoderado")
+    @GetMapping(value = "/apoderado")
     List<Apoderado> showAll() {
         return apoderadoService.apoderadoList();
     }

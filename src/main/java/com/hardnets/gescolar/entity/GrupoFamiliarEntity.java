@@ -23,7 +23,7 @@ public class GrupoFamiliarEntity {
     }
 
     @Basic
-    @Column(name = "GFAM_Alumno")
+    @Column(name = "GFAM_Alumno", columnDefinition = "nvarchar(10)")
     public String getGfamAlumno() {
         return gfamAlumno;
     }

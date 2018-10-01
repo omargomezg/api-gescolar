@@ -38,7 +38,7 @@ public class DetalleBoletaEntity {
     }
 
     @Basic
-    @Column(name = "TPAG_Numero")
+    @Column(name = "TPAG_Numero", columnDefinition = "nvarchar(50)")
     public String getTpagNumero() {
         return tpagNumero;
     }
@@ -58,7 +58,7 @@ public class DetalleBoletaEntity {
     }
 
     @Basic
-    @Column(name = "TPAG_Banco")
+    @Column(name = "TPAG_Banco", columnDefinition = "nvarchar(255)")
     public String getTpagBanco() {
         return tpagBanco;
     }
@@ -68,7 +68,7 @@ public class DetalleBoletaEntity {
     }
 
     @Basic
-    @Column(name = "TPAG_Estado")
+    @Column(name = "TPAG_Estado", columnDefinition = "varchar(9)")
     public String getTpagEstado() {
         return tpagEstado;
     }

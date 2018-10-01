@@ -22,7 +22,7 @@ public class RegionEntity {
     }
 
     @Basic
-    @Column(name = "REGI_Nombre")
+    @Column(name = "REGI_Nombre", columnDefinition = "nvarchar(250)")
     public String getRegiNombre() {
         return regiNombre;
     }

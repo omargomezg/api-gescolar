@@ -23,7 +23,7 @@ public class PlantillaCorreoEntity {
     }
 
     @Basic
-    @Column(name = "PCOR_Subject")
+    @Column(name = "PCOR_Subject", columnDefinition = "nvarchar(255)")
     public String getPcorSubject() {
         return pcorSubject;
     }
@@ -33,7 +33,7 @@ public class PlantillaCorreoEntity {
     }
 
     @Basic
-    @Column(name = "PCOR_Body")
+    @Column(name = "PCOR_Body", columnDefinition = "text")
     public String getPcorBody() {
         return pcorBody;
     }
@@ -53,7 +53,7 @@ public class PlantillaCorreoEntity {
     }
 
     @Basic
-    @Column(name = "PCOR_Parametros")
+    @Column(name = "PCOR_Parametros", columnDefinition = "nvarchar(200)")
     public String getPcorParametros() {
         return pcorParametros;
     }

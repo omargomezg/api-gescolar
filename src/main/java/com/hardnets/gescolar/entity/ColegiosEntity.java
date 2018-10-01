@@ -23,7 +23,7 @@ public class ColegiosEntity {
     }
 
     @Basic
-    @Column(name = "COLE_Nombre")
+    @Column(name = "COLE_Nombre", columnDefinition = "nvarchar(200)")
     public String getColeNombre() {
         return coleNombre;
     }

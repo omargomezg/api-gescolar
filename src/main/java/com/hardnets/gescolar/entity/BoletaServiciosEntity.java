@@ -34,7 +34,7 @@ public class BoletaServiciosEntity {
     }
 
     @Basic
-    @Column(name = "BOLE_Monto")
+    @Column(name = "BOLE_Monto", columnDefinition = "numeric(9,0)")
     public Integer getBoleMonto() {
         return boleMonto;
     }
@@ -64,7 +64,7 @@ public class BoletaServiciosEntity {
     }
 
     @Basic
-    @Column(name = "BOLE_NumeroSII")
+    @Column(name = "BOLE_NumeroSII", columnDefinition = "numeric(19,0)")
     public Integer getBoleNumeroSii() {
         return boleNumeroSii;
     }
@@ -84,7 +84,7 @@ public class BoletaServiciosEntity {
     }
 
     @Basic
-    @Column(name = "BOLE_Comentario")
+    @Column(name = "BOLE_Comentario", columnDefinition = "nvarchar(255)")
     public String getBoleComentario() {
         return boleComentario;
     }
@@ -94,7 +94,7 @@ public class BoletaServiciosEntity {
     }
 
     @Basic
-    @Column(name = "BOLE_Usuario")
+    @Column(name = "BOLE_Usuario", columnDefinition = "nvarchar(10)")
     public String getBoleUsuario() {
         return boleUsuario;
     }

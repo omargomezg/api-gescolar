@@ -14,7 +14,7 @@ public class LogsEntity {
     private String logsUsuario;
 
     @Id
-    @Column(name = "LOGS_Id")
+    @Column(name = "LOGS_Id", columnDefinition = "uniqueidentifier")
     public String getLogsId() {
         return logsId;
     }
@@ -24,7 +24,7 @@ public class LogsEntity {
     }
 
     @Basic
-    @Column(name = "LOGS_Data")
+    @Column(name = "LOGS_Data", columnDefinition = "nvarchar(540)")
     public String getLogsData() {
         return logsData;
     }
@@ -44,7 +44,7 @@ public class LogsEntity {
     }
 
     @Basic
-    @Column(name = "LOGS_Tipo")
+    @Column(name = "LOGS_Tipo", columnDefinition = "nvarchar(10)")
     public String getLogsTipo() {
         return logsTipo;
     }
@@ -54,7 +54,7 @@ public class LogsEntity {
     }
 
     @Basic
-    @Column(name = "LOGS_Usuario")
+    @Column(name = "LOGS_Usuario", columnDefinition = "nvarchar(10)")
     public String getLogsUsuario() {
         return logsUsuario;
     }

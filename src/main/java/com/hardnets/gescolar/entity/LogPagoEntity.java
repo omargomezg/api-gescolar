@@ -24,7 +24,7 @@ public class LogPagoEntity {
     }
 
     @Basic
-    @Column(name = "LOPA_Texto")
+    @Column(name = "LOPA_Texto", columnDefinition = "nvarchar(200)")
     public String getLopaTexto() {
         return lopaTexto;
     }

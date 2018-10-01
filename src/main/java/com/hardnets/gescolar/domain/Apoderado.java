@@ -12,7 +12,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 public class Apoderado {
-    private String rut;
+    private String Rut;
     private String nombres;
     private String paterno;
     private String materno;

@@ -26,7 +26,7 @@ public class ColegiaturaEntity {
     }
 
     @Basic
-    @Column(name = "COLE_Alumno")
+    @Column(name = "COLE_Alumno", columnDefinition = "nvarchar(10)")
     public String getColeAlumno() {
         return coleAlumno;
     }
@@ -36,7 +36,7 @@ public class ColegiaturaEntity {
     }
 
     @Basic
-    @Column(name = "COLE_Estado")
+    @Column(name = "COLE_Estado", columnDefinition = "char(10)")
     public String getColeEstado() {
         return coleEstado;
     }

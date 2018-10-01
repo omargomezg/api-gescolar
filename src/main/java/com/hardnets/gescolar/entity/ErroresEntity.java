@@ -14,7 +14,7 @@ public class ErroresEntity {
     private String erroOrigen;
 
     @Id
-    @Column(name = "ERROR_Id")
+    @Column(name = "ERROR_Id", columnDefinition = "uniqueidentifier")
     public String getErrorId() {
         return errorId;
     }
@@ -24,7 +24,7 @@ public class ErroresEntity {
     }
 
     @Basic
-    @Column(name = "ERRO_Detalle")
+    @Column(name = "ERRO_Detalle", columnDefinition = "nvarchar(100)")
     public String getErroDetalle() {
         return erroDetalle;
     }
@@ -54,7 +54,7 @@ public class ErroresEntity {
     }
 
     @Basic
-    @Column(name = "ERRO_Origen")
+    @Column(name = "ERRO_Origen", columnDefinition = "text")
     public String getErroOrigen() {
         return erroOrigen;
     }

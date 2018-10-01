@@ -8,7 +8,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "TB_SCHP_Alumno", schema = "dbo", catalog = "kimeltu")
 public class AlumnoEntity {
-    private String almnRut;
+    private String rut;
     private String almnNombres;
     private String almnApPaterno;
     private String almnApMaterno;
@@ -29,13 +29,13 @@ public class AlumnoEntity {
     private Collection<PostulacionEntity> tbSchpPostulacionsByAlmnRut;
 
     @Id
-    @Column(name = "ALMN_Rut")
-    public String getAlmnRut() {
-        return almnRut;
+    @Column(name = "ALMN_Rut", columnDefinition = "nvarchar(10)")
+    public String getRut() {
+        return rut;
     }
 
-    public void setAlmnRut(String almnRut) {
-        this.almnRut = almnRut;
+    public void setRut(String Rut) {
+        this.rut = Rut;
     }
 
     @Basic
@@ -89,7 +89,7 @@ public class AlumnoEntity {
     }
 
     @Basic
-    @Column(name = "ALMN_Estado")
+    @Column(name = "ALMN_Estado", columnDefinition = "nchar(10)")
     public String getAlmnEstado() {
         return almnEstado;
     }
@@ -99,7 +99,7 @@ public class AlumnoEntity {
     }
 
     @Basic
-    @Column(name = "ALMN_Genero")
+    @Column(name = "ALMN_Genero", columnDefinition = "nchar(1)")
     public String getAlmnGenero() {
         return almnGenero;
     }
@@ -109,7 +109,7 @@ public class AlumnoEntity {
     }
 
     @Basic
-    @Column(name = "ALMN_Apoderado")
+    @Column(name = "ALMN_Apoderado", columnDefinition = "nvarchar(10)")
     public String getAlmnApoderado() {
         return almnApoderado;
     }
@@ -123,7 +123,7 @@ public class AlumnoEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AlumnoEntity that = (AlumnoEntity) o;
-        return Objects.equals(almnRut, that.almnRut) &&
+        return Objects.equals(rut, that.rut) &&
                 Objects.equals(almnNombres, that.almnNombres) &&
                 Objects.equals(almnApPaterno, that.almnApPaterno) &&
                 Objects.equals(almnApMaterno, that.almnApMaterno) &&
@@ -136,7 +136,7 @@ public class AlumnoEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(almnRut, almnNombres, almnApPaterno, almnApMaterno, almnNacimiento, almnDomicilio, almnEstado, almnGenero, almnApoderado);
+        return Objects.hash(rut, almnNombres, almnApPaterno, almnApMaterno, almnNacimiento, almnDomicilio, almnEstado, almnGenero, almnApoderado);
     }
 
     @OneToMany(mappedBy = "tbSchpAlumnoByAcurAlumno")

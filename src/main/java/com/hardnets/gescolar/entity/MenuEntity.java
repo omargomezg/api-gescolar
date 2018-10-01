@@ -33,7 +33,7 @@ public class MenuEntity {
     }
 
     @Basic
-    @Column(name = "MENU_Perfiles")
+    @Column(name = "MENU_Perfiles", columnDefinition = "nvarchar(100)")
     public String getMenuPerfiles() {
         return menuPerfiles;
     }

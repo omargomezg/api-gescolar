@@ -14,7 +14,7 @@ public class ProvinciaEntity {
     private RegionEntity tbSchmRegionByProvRegion;
 
     @Id
-    @Column(name = "PROV_Id")
+    @Column(name = "PROV_Id", columnDefinition = "numeric(3,0)")
     public int getProvId() {
         return provId;
     }
@@ -24,7 +24,7 @@ public class ProvinciaEntity {
     }
 
     @Basic
-    @Column(name = "PROV_Nombre")
+    @Column(name = "PROV_Nombre", columnDefinition = "nchar(100)")
     public String getProvNombre() {
         return provNombre;
     }

@@ -14,7 +14,7 @@ public class ComunaEntity {
     private Collection<DomicilioEntity> tbSchpDomiciliosByComuId;
 
     @Id
-    @Column(name = "COMU_Id")
+    @Column(name = "COMU_Id", columnDefinition = "numeric(5,0)")
     public int getComuId() {
         return comuId;
     }
@@ -24,7 +24,7 @@ public class ComunaEntity {
     }
 
     @Basic
-    @Column(name = "COMU_Nombre")
+    @Column(name = "COMU_Nombre", columnDefinition = "nchar(50)")
     public String getComuNombre() {
         return comuNombre;
     }
@@ -34,7 +34,7 @@ public class ComunaEntity {
     }
 
     @Basic
-    @Column(name = "COMU_Provincia", insertable = false, updatable = false)
+    @Column(name = "COMU_Provincia", insertable = false, updatable = false, columnDefinition = "numeric(3,0)")
     public int getComuProvincia() {
         return comuProvincia;
     }
