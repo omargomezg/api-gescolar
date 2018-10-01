@@ -14,9 +14,9 @@ import java.util.List;
 public class Apoderado {
     private String Rut;
     private String nombres;
-    private String paterno;
-    private String materno;
-    private Date nacimiento;
+    private String apellidoPaterno;
+    private String apellidoMaterno;
+    private Date fechaNacimiento;
     private String correo;
     private List<Telefono> telefonos;
 }

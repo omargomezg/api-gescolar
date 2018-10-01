@@ -7,39 +7,39 @@ import java.util.Objects;
 @Entity
 @Table(name = "TB_SCHP_Telefonos", schema = "dbo", catalog = "kimeltu")
 public class TelefonosEntity {
-    private short telfId;
-    private String telfNumero;
-    private String telfTipo;
-    private Collection<TelFamiliarEntity> tbSchpTelFamiliarsByTelfId;
+    private short id;
+    private String numero;
+    private String tipo;
+    private Collection<TelFamiliarEntity> tbSchpTelFamiliarsById;
 
     @Id
     @Column(name = "TELF_Id")
-    public short getTelfId() {
-        return telfId;
+    public short getId() {
+        return id;
     }
 
-    public void setTelfId(short telfId) {
-        this.telfId = telfId;
+    public void setId(short id) {
+        this.id = id;
     }
 
     @Basic
     @Column(name = "TELF_Numero", columnDefinition = "nvarchar(15)")
-    public String getTelfNumero() {
-        return telfNumero;
+    public String getNumero() {
+        return numero;
     }
 
-    public void setTelfNumero(String telfNumero) {
-        this.telfNumero = telfNumero;
+    public void setNumero(String numero) {
+        this.numero = numero;
     }
 
     @Basic
     @Column(name = "TELF_Tipo", columnDefinition = "nvarchar(50)")
-    public String getTelfTipo() {
-        return telfTipo;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setTelfTipo(String telfTipo) {
-        this.telfTipo = telfTipo;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     @Override
@@ -47,22 +47,22 @@ public class TelefonosEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TelefonosEntity that = (TelefonosEntity) o;
-        return telfId == that.telfId &&
-                Objects.equals(telfNumero, that.telfNumero) &&
-                Objects.equals(telfTipo, that.telfTipo);
+        return id == that.id &&
+                Objects.equals(numero, that.numero) &&
+                Objects.equals(tipo, that.tipo);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(telfId, telfNumero, telfTipo);
+        return Objects.hash(id, numero, tipo);
     }
 
-    @OneToMany(mappedBy = "tbSchpTelefonosByTelfTelefono")
-    public Collection<TelFamiliarEntity> getTbSchpTelFamiliarsByTelfId() {
-        return tbSchpTelFamiliarsByTelfId;
+    @OneToMany(mappedBy = "tbSchpTelefonosByTelefono")
+    public Collection<TelFamiliarEntity> getTbSchpTelFamiliarsById() {
+        return tbSchpTelFamiliarsById;
     }
 
-    public void setTbSchpTelFamiliarsByTelfId(Collection<TelFamiliarEntity> tbSchpTelFamiliarsByTelfId) {
-        this.tbSchpTelFamiliarsByTelfId = tbSchpTelFamiliarsByTelfId;
+    public void setTbSchpTelFamiliarsById(Collection<TelFamiliarEntity> tbSchpTelFamiliarsById) {
+        this.tbSchpTelFamiliarsById = tbSchpTelFamiliarsById;
     }
 }

@@ -18,9 +18,9 @@ import java.util.Objects;
 )
 public class FamiliaresEntity implements Serializable {
     private String Rut;
-    private String famiNombres;
-    private String famiApPaterno;
-    private String famiApMaterno;
+    private String Nombres;
+    private String ApPaterno;
+    private String ApMaterno;
     private Date famiNacimiento;
     private Integer famiEstadoCivil;
     private String famiCorreo;
@@ -38,42 +38,42 @@ public class FamiliaresEntity implements Serializable {
 
     @Id
     @Column(name = "FAMI_Rut", columnDefinition = "nvarchar(10)")
-    public String getFamiRut() {
+    public String getRut() {
         return Rut;
     }
 
-    public void setFamiRut(String Rut) {
+    public void setRut(String Rut) {
         this.Rut = Rut;
     }
 
     @Basic
     @Column(name = "FAMI_Nombres", columnDefinition = "varchar(255)")
-    public String getFamiNombres() {
-        return famiNombres;
+    public String getNombres() {
+        return Nombres;
     }
 
-    public void setFamiNombres(String famiNombres) {
-        this.famiNombres = famiNombres;
+    public void setNombres(String Nombres) {
+        this.Nombres = Nombres;
     }
 
     @Basic
     @Column(name = "FAMI_ApPaterno", columnDefinition = "varchar(255)")
-    public String getFamiApPaterno() {
-        return famiApPaterno;
+    public String getApPaterno() {
+        return ApPaterno;
     }
 
-    public void setFamiApPaterno(String famiApPaterno) {
-        this.famiApPaterno = famiApPaterno;
+    public void setApPaterno(String ApPaterno) {
+        this.ApPaterno = ApPaterno;
     }
 
     @Basic
     @Column(name = "FAMI_ApMaterno", columnDefinition = "varchar(255)")
-    public String getFamiApMaterno() {
-        return famiApMaterno;
+    public String getApMaterno() {
+        return ApMaterno;
     }
 
-    public void setFamiApMaterno(String famiApMaterno) {
-        this.famiApMaterno = famiApMaterno;
+    public void setApMaterno(String ApMaterno) {
+        this.ApMaterno = ApMaterno;
     }
 
     @Basic
@@ -172,9 +172,9 @@ public class FamiliaresEntity implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
         FamiliaresEntity that = (FamiliaresEntity) o;
         return Objects.equals(Rut, that.Rut) &&
-                Objects.equals(famiNombres, that.famiNombres) &&
-                Objects.equals(famiApPaterno, that.famiApPaterno) &&
-                Objects.equals(famiApMaterno, that.famiApMaterno) &&
+                Objects.equals(Nombres, that.Nombres) &&
+                Objects.equals(ApPaterno, that.ApPaterno) &&
+                Objects.equals(ApMaterno, that.ApMaterno) &&
                 Objects.equals(famiNacimiento, that.famiNacimiento) &&
                 Objects.equals(famiEstadoCivil, that.famiEstadoCivil) &&
                 Objects.equals(famiCorreo, that.famiCorreo) &&
@@ -188,7 +188,7 @@ public class FamiliaresEntity implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(Rut, famiNombres, famiApPaterno, famiApMaterno, famiNacimiento, famiEstadoCivil, famiCorreo, famiGenero, famiGrupoFamiliar, famiParentesco, famiProfesion, famiFijo, famiMovil);
+        return Objects.hash(Rut, Nombres, ApPaterno, ApMaterno, famiNacimiento, famiEstadoCivil, famiCorreo, famiGenero, famiGrupoFamiliar, famiParentesco, famiProfesion, famiFijo, famiMovil);
     }
 
     @OneToMany(mappedBy = "tbSchpFamiliaresByAlmnApoderado")
@@ -230,7 +230,7 @@ public class FamiliaresEntity implements Serializable {
         this.tbSchmParametrosByFamiParentesco = tbSchmParametrosByFamiParentesco;
     }
 
-    @OneToMany(mappedBy = "tbSchpFamiliaresByTelfFamiliar")
+    @OneToMany(mappedBy = "tbSchpFamiliaresByFamiliar")
     public Collection<TelFamiliarEntity> getTbSchpTelFamiliarsByFamiRut() {
         return tbSchpTelFamiliarsByFamiRut;
     }

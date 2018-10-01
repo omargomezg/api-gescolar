@@ -16,15 +16,15 @@ public class ApoderadoRestController {
         this.apoderadoService = apoderadoService;
     }
 
+    ///
     @GetMapping(value = "/apoderado")
     List<Apoderado> showAll() {
         return apoderadoService.apoderadoList();
     }
 
-    @GetMapping("/apoderado/{id}")
-    UserModel showFiltered(@PathVariable int id) {
-        UserModel userModel = new UserModel(23, "Descripcion de un solo registro");
-        return userModel;
+    @GetMapping("/apoderado/{rut}")
+    Apoderado showFiltered(@PathVariable String rut) {
+        return apoderadoService.apoderadoRut(rut);
     }
 
     @PostMapping("/apoderado")

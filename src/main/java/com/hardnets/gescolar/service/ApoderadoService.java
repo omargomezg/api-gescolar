@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface ApoderadoService {
     List<Apoderado> apoderadoList();
-    void apoderadoDelete(String Rut);
+    Apoderado apoderadoRut(String rut);
+    void apoderadoDelete(String rut);
 }
