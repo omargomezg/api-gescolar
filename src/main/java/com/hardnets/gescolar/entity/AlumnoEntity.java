@@ -9,9 +9,9 @@ import java.util.Objects;
 @Table(name = "TB_SCHP_Alumno", schema = "dbo", catalog = "kimeltu")
 public class AlumnoEntity {
     private String rut;
-    private String almnNombres;
-    private String almnApPaterno;
-    private String almnApMaterno;
+    private String nombres;
+    private String apellidoPaterno;
+    private String apellidoMaterno;
     private Date almnNacimiento;
     private Short almnDomicilio;
     private String almnEstado;
@@ -40,32 +40,32 @@ public class AlumnoEntity {
 
     @Basic
     @Column(name = "ALMN_Nombres")
-    public String getAlmnNombres() {
-        return almnNombres;
+    public String getNombres() {
+        return nombres;
     }
 
-    public void setAlmnNombres(String almnNombres) {
-        this.almnNombres = almnNombres;
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
     }
 
     @Basic
     @Column(name = "ALMN_ApPaterno")
-    public String getAlmnApPaterno() {
-        return almnApPaterno;
+    public String getApellidoPaterno() {
+        return apellidoPaterno;
     }
 
-    public void setAlmnApPaterno(String almnApPaterno) {
-        this.almnApPaterno = almnApPaterno;
+    public void setApellidoPaterno(String apellidoPaterno) {
+        this.apellidoPaterno = apellidoPaterno;
     }
 
     @Basic
     @Column(name = "ALMN_ApMaterno")
-    public String getAlmnApMaterno() {
-        return almnApMaterno;
+    public String getApellidoMaterno() {
+        return apellidoMaterno;
     }
 
-    public void setAlmnApMaterno(String almnApMaterno) {
-        this.almnApMaterno = almnApMaterno;
+    public void setApellidoMaterno(String apellido) {
+        this.apellidoMaterno = apellidoMaterno;
     }
 
     @Basic
@@ -124,9 +124,9 @@ public class AlumnoEntity {
         if (o == null || getClass() != o.getClass()) return false;
         AlumnoEntity that = (AlumnoEntity) o;
         return Objects.equals(rut, that.rut) &&
-                Objects.equals(almnNombres, that.almnNombres) &&
-                Objects.equals(almnApPaterno, that.almnApPaterno) &&
-                Objects.equals(almnApMaterno, that.almnApMaterno) &&
+                Objects.equals(nombres, that.nombres) &&
+                Objects.equals(apellidoPaterno, that.apellidoPaterno) &&
+                Objects.equals(apellidoMaterno, that.apellidoMaterno) &&
                 Objects.equals(almnNacimiento, that.almnNacimiento) &&
                 Objects.equals(almnDomicilio, that.almnDomicilio) &&
                 Objects.equals(almnEstado, that.almnEstado) &&
@@ -136,7 +136,7 @@ public class AlumnoEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(rut, almnNombres, almnApPaterno, almnApMaterno, almnNacimiento, almnDomicilio, almnEstado, almnGenero, almnApoderado);
+        return Objects.hash(rut, nombres, apellidoPaterno, apellidoMaterno, almnNacimiento, almnDomicilio, almnEstado, almnGenero, almnApoderado);
     }
 
     @OneToMany(mappedBy = "tbSchpAlumnoByAcurAlumno")

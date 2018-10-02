@@ -14,14 +14,18 @@ import java.util.List;
 @RequiredArgsConstructor
 @Service
 @Slf4j
-public class EstadoCivilImpl implements EstadoCivilService {
+public class EstadoCivilServiceImpl implements EstadoCivilService {
 
-    private final ParametrosRepository parametrosRepository;
     private final short idGrupo = 1;
+    private ParametrosRepository parametrosRepository;
+
+    public EstadoCivilServiceImpl(ParametrosRepository parametrosRepository) {
+        this.parametrosRepository = parametrosRepository;
+    }
 
     public List<EstadoCivil> getAll() {
 
-        List<ParametrosEntity> estados = parametrosRepository.getByIdGrupo((short)1);
+        List<ParametrosEntity> estados = parametrosRepository.getByIdGrupo((short) 1);
         List<EstadoCivil> estadosCivil = new ArrayList<>();
         for (ParametrosEntity item : estados) {
             estadosCivil.add(new EstadoCivil(item.getParaId(), item.getParaDescripcion()));

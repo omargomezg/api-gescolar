@@ -7,12 +7,12 @@ import java.util.Objects;
 @Entity
 @Table(name = "TB_SCHP_Postulacion", schema = "dbo", catalog = "kimeltu")
 public class PostulacionEntity {
-    private short postId;
-    private int postYear;
+    private Long id;
+    private Long year;
     private Integer postCursoPostulado;
     private short postCursando;
     private Byte postProcedencia;
-    private String postAlumno;
+    private String alumno;
     private String postEstado;
     private String postColegio;
     private Integer postBoleta;
@@ -25,23 +25,23 @@ public class PostulacionEntity {
     private BoletaServiciosEntity tbSchpBoletaServiciosByPostBoleta;
 
     @Id
-    @Column(name = "POST_Id")
-    public short getPostId() {
-        return postId;
+    @Column(name = "POST_Id", columnDefinition = "smallint")
+    public Long getId() {
+        return id;
     }
 
-    public void setPostId(short postId) {
-        this.postId = postId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     @Basic
     @Column(name = "POST_Year", columnDefinition = "numeric(4,0)")
-    public int getPostYear() {
-        return postYear;
+    public Long getYear() {
+        return year;
     }
 
-    public void setPostYear(int postYear) {
-        this.postYear = postYear;
+    public void setYear(Long year) {
+        this.year = year;
     }
 
     @Basic
@@ -76,12 +76,12 @@ public class PostulacionEntity {
 
     @Basic
     @Column(name = "POST_Alumno", columnDefinition = "nvarchar(10)")
-    public String getPostAlumno() {
-        return postAlumno;
+    public String getAlumno() {
+        return alumno;
     }
 
-    public void setPostAlumno(String postAlumno) {
-        this.postAlumno = postAlumno;
+    public void setAlumno(String alumno) {
+        this.alumno = alumno;
     }
 
     @Basic
@@ -139,12 +139,12 @@ public class PostulacionEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PostulacionEntity that = (PostulacionEntity) o;
-        return postId == that.postId &&
-                postYear == that.postYear &&
+        return id == that.id &&
+                year == that.year &&
                 postCursando == that.postCursando &&
                 Objects.equals(postCursoPostulado, that.postCursoPostulado) &&
                 Objects.equals(postProcedencia, that.postProcedencia) &&
-                Objects.equals(postAlumno, that.postAlumno) &&
+                Objects.equals(alumno, that.alumno) &&
                 Objects.equals(postEstado, that.postEstado) &&
                 Objects.equals(postColegio, that.postColegio) &&
                 Objects.equals(postBoleta, that.postBoleta) &&
@@ -154,7 +154,7 @@ public class PostulacionEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(postId, postYear, postCursoPostulado, postCursando, postProcedencia, postAlumno, postEstado, postColegio, postBoleta, postFechaPostulacion, postFechaResolucion);
+        return Objects.hash(id, year, postCursoPostulado, postCursando, postProcedencia, alumno, postEstado, postColegio, postBoleta, postFechaPostulacion, postFechaResolucion);
     }
 
     @ManyToOne
