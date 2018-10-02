@@ -7,9 +7,9 @@ import java.util.Objects;
 @Entity
 @Table(name = "TB_SCHM_Parametros", schema = "dbo", catalog = "kimeltu")
 public class ParametrosEntity {
-    private int paraId;
-    private short paraGrupo;
-    private short paraDetalle;
+    private Long paraId;
+    private short idGrupo;
+    private short idDetalle;
     private String paraDescripcion;
     private Boolean paraEstado;
     private Collection<ServiciosEntity> tbSchmServiciosByParaId;
@@ -17,33 +17,33 @@ public class ParametrosEntity {
     private Collection<FamiliaresEntity> tbSchpFamiliaresByParaId_0;
 
     @Id
-    @Column(name = "PARA_Id")
-    public int getParaId() {
+    @Column(name = "PARA_Id", columnDefinition = "int")
+    public Long getParaId() {
         return paraId;
     }
 
-    public void setParaId(int paraId) {
+    public void setParaId(Long paraId) {
         this.paraId = paraId;
     }
 
     @Basic
     @Column(name = "PARA_Grupo")
-    public short getParaGrupo() {
-        return paraGrupo;
+    public short getIdGrupo() {
+        return idGrupo;
     }
 
-    public void setParaGrupo(short paraGrupo) {
-        this.paraGrupo = paraGrupo;
+    public void setIdGrupo(short idGrupo) {
+        this.idGrupo = idGrupo;
     }
 
     @Basic
     @Column(name = "PARA_Detalle")
-    public short getParaDetalle() {
-        return paraDetalle;
+    public short getIdDetalle() {
+        return idDetalle;
     }
 
-    public void setParaDetalle(short paraDetalle) {
-        this.paraDetalle = paraDetalle;
+    public void setIdDetalle(short detalle) {
+        this.idDetalle = idDetalle;
     }
 
     @Basic
@@ -72,15 +72,15 @@ public class ParametrosEntity {
         if (o == null || getClass() != o.getClass()) return false;
         ParametrosEntity that = (ParametrosEntity) o;
         return paraId == that.paraId &&
-                paraGrupo == that.paraGrupo &&
-                paraDetalle == that.paraDetalle &&
+                idGrupo == that.idGrupo &&
+                idDetalle == that.idDetalle &&
                 Objects.equals(paraDescripcion, that.paraDescripcion) &&
                 Objects.equals(paraEstado, that.paraEstado);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(paraId, paraGrupo, paraDetalle, paraDescripcion, paraEstado);
+        return Objects.hash(paraId, idGrupo, idDetalle, paraDescripcion, paraEstado);
     }
 
     @OneToMany(mappedBy = "tbSchmParametrosByServTipo")

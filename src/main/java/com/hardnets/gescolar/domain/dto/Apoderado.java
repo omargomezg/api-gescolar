@@ -1,5 +1,6 @@
-package com.hardnets.gescolar.domain;
+package com.hardnets.gescolar.domain.dto;
 
+import com.hardnets.gescolar.domain.Telefono;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,5 +19,6 @@ public class Apoderado {
     private String apellidoMaterno;
     private Date fechaNacimiento;
     private String correo;
+    private Integer estadoCivil;
     private List<Telefono> telefonos;
 }

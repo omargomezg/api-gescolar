@@ -1,6 +1,6 @@
 package com.hardnets.gescolar.service.impl;
 
-import com.hardnets.gescolar.domain.Apoderado;
+import com.hardnets.gescolar.domain.dto.Apoderado;
 import com.hardnets.gescolar.domain.Telefono;
 import com.hardnets.gescolar.entity.FamiliaresEntity;
 import com.hardnets.gescolar.entity.TelefonosEntity;
@@ -13,8 +13,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.core.convert.TypeDescriptor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -35,7 +38,7 @@ public class ApoderadoServiceImpl implements ApoderadoService {
     }
 
     @Override
-    public List<Apoderado> apoderadoList() {
+    public List<Apoderado> getApoderados() {
 
         List<FamiliaresEntity> familiaresEntities = familiaresRepository.findAll();
         List<Apoderado> apoderados = new ArrayList<>();
@@ -55,13 +58,14 @@ public class ApoderadoServiceImpl implements ApoderadoService {
     }
 
     @Override
-    public Apoderado apoderadoRut(String rut) {
+    public Apoderado getApoderado(String rut) {
         FamiliaresEntity apo = familiaresRepository.findByRut(rut);
         apoderado.setRut(apo.getRut());
         apoderado.setNombres(apo.getNombres());
         apoderado.setApellidoPaterno(apo.getApPaterno());
         apoderado.setApellidoMaterno(apo.getApMaterno());
         apoderado.setFechaNacimiento(apo.getFamiNacimiento());
+        apoderado.setEstadoCivil(apo.getFamiEstadoCivil());
 
         List<TelefonosEntity> telefonosEntity = telefonoRepository.findByRut(rut);
 
@@ -79,7 +83,26 @@ public class ApoderadoServiceImpl implements ApoderadoService {
     }
 
     @Override
-    public void apoderadoDelete(String rut) {
+    @Transactional
+    public void updApoderado(Apoderado apoderado, String rut) {
+        FamiliaresEntity apo = familiaresRepository.findByRut(rut);
+        if (apo != null) {
+            if(apoderado.getFechaNacimiento()!= null) {
+                Date dataIn = new Date(apoderado.getFechaNacimiento().getTime());
+                Calendar c = Calendar.getInstance();
+                c.setTime(dataIn);
+                c.add(Calendar.DATE, 1);
+                apo.setFamiNacimiento(new java.sql.Date(c.getTime().getTime()));
+            }
+            apo.setFamiEstadoCivil(apoderado.getEstadoCivil());
+            apo.setNombres(apoderado.getNombres());
+            apo.setApPaterno(apoderado.getApellidoPaterno());
+            apo.setFamiCorreo(apoderado.getCorreo());
+        }
+    }
+
+    @Override
+    public void delApoderado(String rut) {
 
     }
 
