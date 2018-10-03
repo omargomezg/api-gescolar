@@ -64,7 +64,7 @@ public class AlumnoEntity {
         return apellidoMaterno;
     }
 
-    public void setApellidoMaterno(String apellido) {
+    public void setApellidoMaterno(String apellidoMaterno) {
         this.apellidoMaterno = apellidoMaterno;
     }
 
