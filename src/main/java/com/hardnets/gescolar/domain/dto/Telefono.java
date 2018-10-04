@@ -1,4 +1,4 @@
-package com.hardnets.gescolar.domain;
+package com.hardnets.gescolar.domain.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

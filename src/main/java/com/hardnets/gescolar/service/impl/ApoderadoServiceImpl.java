@@ -1,15 +1,13 @@
 package com.hardnets.gescolar.service.impl;
 
 import com.hardnets.gescolar.domain.dto.Apoderado;
-import com.hardnets.gescolar.domain.Telefono;
+import com.hardnets.gescolar.domain.dto.Telefono;
 import com.hardnets.gescolar.entity.FamiliaresEntity;
 import com.hardnets.gescolar.entity.TelefonosEntity;
 import com.hardnets.gescolar.repository.FamiliaresRepository;
 import com.hardnets.gescolar.repository.TelefonoRepository;
 import com.hardnets.gescolar.service.ApoderadoService;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.core.convert.TypeDescriptor;
 import org.springframework.stereotype.Service;
@@ -21,7 +19,6 @@ import java.util.*;
 @Service
 @Slf4j
 public class ApoderadoServiceImpl implements ApoderadoService {
-    private static Logger logger = LoggerFactory.getLogger(ApoderadoServiceImpl.class);
     Apoderado apoderado = new Apoderado();
     private FamiliaresRepository familiaresRepository;
     private ConversionService conversionService;
@@ -38,6 +35,7 @@ public class ApoderadoServiceImpl implements ApoderadoService {
     @Override
     public List<Apoderado> getApoderados() {
 
+        log.info("Consulta apoderados");
         List<FamiliaresEntity> familiaresEntities = familiaresRepository.findAll();
         List<Apoderado> apoderados = new ArrayList<>();
         TypeDescriptor sourceType = TypeDescriptor.collection(List.class, TypeDescriptor.valueOf(FamiliaresEntity.class));
@@ -50,6 +48,8 @@ public class ApoderadoServiceImpl implements ApoderadoService {
             apoderado.setApellidoMaterno(item.getApellidoMaterno());
             apoderados.add(apoderado);
         }
+
+        log.info("Se han encontrado {} registros", apoderados.size());
 
         return apoderados;
 

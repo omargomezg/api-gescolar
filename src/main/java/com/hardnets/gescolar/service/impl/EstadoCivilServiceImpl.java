@@ -16,7 +16,6 @@ import java.util.List;
 @Slf4j
 public class EstadoCivilServiceImpl implements EstadoCivilService {
 
-    private final short idGrupo = 1;
     private ParametrosRepository parametrosRepository;
 
     public EstadoCivilServiceImpl(ParametrosRepository parametrosRepository) {
@@ -30,6 +29,7 @@ public class EstadoCivilServiceImpl implements EstadoCivilService {
         for (ParametrosEntity item : estados) {
             estadosCivil.add(new EstadoCivil(item.getParaId(), item.getParaDescripcion()));
         }
+        log.info("Encuentra {} registros", estadosCivil.size());
         return estadosCivil;
     }
 }

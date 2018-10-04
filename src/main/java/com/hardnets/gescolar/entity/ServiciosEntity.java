@@ -3,7 +3,6 @@ package com.hardnets.gescolar.entity;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Collection;
-import java.util.Currency;
 import java.util.Objects;
 
 @Entity

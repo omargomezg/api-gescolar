@@ -42,7 +42,7 @@ public class ParametrosEntity {
         return idDetalle;
     }
 
-    public void setIdDetalle(short detalle) {
+    public void setIdDetalle(short idDetalle) {
         this.idDetalle = idDetalle;
     }
 

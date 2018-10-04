@@ -1,13 +1,15 @@
 package com.hardnets.gescolar.entity;
 
 import javax.persistence.*;
+
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.Collection;
 import java.util.Objects;
 
 @Entity
 @Table(name = "TB_SCHP_DetalleBoleta", schema = "dbo", catalog = "kimeltu")
-public class DetalleBoletaEntity {
+public class DetalleBoletaEntity implements Serializable {
     private int tpagId;
     private byte tpagTipo;
     private String tpagNumero;
