@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "TB_SCHM_PlantillaCorreo", schema = "dbo", catalog = "kimeltu")
+@Table(name = "TB_SCHM_PlantillaCorreo", schema = "dbo")
 public class PlantillaCorreoEntity {
     private byte pcorId;
     private String pcorSubject;

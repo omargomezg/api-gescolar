@@ -7,7 +7,7 @@ import java.util.Currency;
 import java.util.Objects;
 
 @Entity
-@Table(name = "TB_SCHM_Servicios", schema = "dbo", catalog = "kimeltu")
+@Table(name = "TB_SCHM_Servicios", schema = "dbo")
 public class ServiciosEntity {
     private byte servId;
     private int servTipo;

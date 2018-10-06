@@ -6,7 +6,7 @@ import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "TB_SCHP_BoletaServicios", schema = "dbo", catalog = "kimeltu")
+@Table(name = "TB_SCHP_BoletaServicios", schema = "dbo")
 public class BoletaServiciosEntity {
     private Timestamp boleFecha;
     private Integer boleMonto;

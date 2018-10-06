@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "TB_SCHM_Parametros", schema = "dbo", catalog = "kimeltu")
+@Table(name = "TB_SCHM_Parametros", schema = "dbo")
 public class ParametrosEntity {
     private Long paraId;
     private short idGrupo;

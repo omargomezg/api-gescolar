@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "TB_SCHP_Comuna", schema = "dbo", catalog = "kimeltu")
+@Table(name = "TB_SCHP_Comuna", schema = "dbo")
 public class ComunaEntity {
     private int comuId;
     private String comuNombre;

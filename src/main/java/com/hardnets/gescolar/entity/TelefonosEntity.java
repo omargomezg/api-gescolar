@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "TB_SCHP_Telefonos", schema = "dbo", catalog = "kimeltu")
+@Table(name = "TB_SCHP_Telefonos", schema = "dbo")
 public class TelefonosEntity {
     private short id;
     private String numero;

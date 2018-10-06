@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "TB_SCHM_Menu", schema = "dbo", catalog = "kimeltu")
+@Table(name = "TB_SCHM_Menu", schema = "dbo")
 public class MenuEntity {
     private String menuNombre;
     private String menuUrl;

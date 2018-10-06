@@ -6,7 +6,7 @@ import java.sql.Date;
 import java.util.Objects;
 
 @Entity
-@Table(name = "TB_SCHP_DetalleColegiatura", schema = "dbo", catalog = "kimeltu")
+@Table(name = "TB_SCHP_DetalleColegiatura", schema = "dbo")
 public class DetalleColegiaturaEntity {
     private int detcId;
     private int detcColegiatura;

@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "TB_SCHP_TelFamiliar", schema = "dbo", catalog = "kimeltu")
+@Table(name = "TB_SCHP_TelFamiliar", schema = "dbo")
 public class TelFamiliarEntity {
     private short id;
     private String familiar;

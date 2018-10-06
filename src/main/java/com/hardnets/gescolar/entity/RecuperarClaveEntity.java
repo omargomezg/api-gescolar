@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.Objects;
 
 @Entity
-@Table(name = "TB_SCHM_RecuperarClave", schema = "dbo", catalog = "kimeltu")
+@Table(name = "TB_SCHM_RecuperarClave", schema = "dbo")
 public class RecuperarClaveEntity {
     private String rclaUsuario;
     private Timestamp rclaFechaSolicitud;

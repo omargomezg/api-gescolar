@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "TB_SCHM_Cursos", schema = "dbo", catalog = "kimeltu")
+@Table(name = "TB_SCHM_Cursos", schema = "dbo")
 public class CursosEntity {
     private short cursId;
     private String cursDescripcion;

@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.Objects;
 
 @Entity
-@Table(name = "TB_SCHM_Usuarios", schema = "dbo", catalog = "kimeltu")
+@Table(name = "TB_SCHM_Usuarios", schema = "dbo")
 public class UsuariosEntity {
     private String usurRut;
     private String usurNombre;

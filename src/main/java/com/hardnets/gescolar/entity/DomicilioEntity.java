@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "TB_SCHP_Domicilio", schema = "dbo", catalog = "kimeltu")
+@Table(name = "TB_SCHP_Domicilio", schema = "dbo")
 public class DomicilioEntity {
     private short domiId;
     private String domiDireccion;

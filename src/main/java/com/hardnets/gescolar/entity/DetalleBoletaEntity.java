@@ -6,7 +6,7 @@ import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "TB_SCHP_DetalleBoleta", schema = "dbo", catalog = "kimeltu")
+@Table(name = "TB_SCHP_DetalleBoleta", schema = "dbo")
 public class DetalleBoletaEntity {
     private int tpagId;
     private byte tpagTipo;

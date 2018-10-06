@@ -6,7 +6,7 @@ import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "TB_SCHP_CompromisoPago", schema = "dbo", catalog = "kimeltu")
+@Table(name = "TB_SCHP_CompromisoPago", schema = "dbo")
 public class CompromisoPagoEntity {
     private int compId;
     private Date compFechaCobro;

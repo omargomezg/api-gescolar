@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "TB_SCHM_Region", schema = "dbo", catalog = "kimeltu")
+@Table(name = "TB_SCHM_Region", schema = "dbo")
 public class RegionEntity {
     private byte regiId;
     private String regiNombre;
