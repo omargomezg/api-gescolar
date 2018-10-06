@@ -12,6 +12,12 @@ import lombok.Setter;
 public class Postulacion {
     private Long id;
     private Long year;
+    private String cursoPostula;
+    private String cursoActual;
+    private String colegioOrigen;
+    private String estado;
+    private String fechaPostulacion;
+    private String fechaResolucion;
     private Alumno alumno;
     private ApoderadoPostulacion apoderado;
 }

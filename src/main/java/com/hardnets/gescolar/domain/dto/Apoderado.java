@@ -1,7 +1,6 @@
 package com.hardnets.gescolar.domain.dto;
 
-import com.hardnets.gescolar.domain.Telefono;
-import lombok.AllArgsConstructor;
+import com.hardnets.gescolar.domain.dto.Telefono;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

@@ -1,6 +1,5 @@
 package com.hardnets.gescolar.repository;
 
-import com.hardnets.gescolar.domain.dto.Postulacion;
 import com.hardnets.gescolar.entity.PostulacionEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

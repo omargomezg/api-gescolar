@@ -1,29 +1,24 @@
 package com.hardnets.gescolar.service.impl;
 
 import com.hardnets.gescolar.domain.dto.Apoderado;
-import com.hardnets.gescolar.domain.Telefono;
+import com.hardnets.gescolar.domain.dto.Telefono;
 import com.hardnets.gescolar.entity.FamiliaresEntity;
 import com.hardnets.gescolar.entity.TelefonosEntity;
 import com.hardnets.gescolar.repository.FamiliaresRepository;
 import com.hardnets.gescolar.repository.TelefonoRepository;
 import com.hardnets.gescolar.service.ApoderadoService;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.core.convert.TypeDescriptor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Service
 @Slf4j
 public class ApoderadoServiceImpl implements ApoderadoService {
-    private static Logger logger = LoggerFactory.getLogger(ApoderadoServiceImpl.class);
     Apoderado apoderado = new Apoderado();
     private FamiliaresRepository familiaresRepository;
     private ConversionService conversionService;
@@ -40,6 +35,7 @@ public class ApoderadoServiceImpl implements ApoderadoService {
     @Override
     public List<Apoderado> getApoderados() {
 
+        log.info("Consulta apoderados");
         List<FamiliaresEntity> familiaresEntities = familiaresRepository.findAll();
         List<Apoderado> apoderados = new ArrayList<>();
         TypeDescriptor sourceType = TypeDescriptor.collection(List.class, TypeDescriptor.valueOf(FamiliaresEntity.class));
@@ -48,10 +44,12 @@ public class ApoderadoServiceImpl implements ApoderadoService {
         for (FamiliaresEntity item : familiaresEntities) {
             apoderado.setRut(item.getRut());
             apoderado.setNombres(item.getNombres());
-            apoderado.setApellidoPaterno(item.getApPaterno());
-            apoderado.setApellidoMaterno(item.getApMaterno());
+            apoderado.setApellidoPaterno(item.getApellidoPaterno());
+            apoderado.setApellidoMaterno(item.getApellidoMaterno());
             apoderados.add(apoderado);
         }
+
+        log.info("Se han encontrado {} registros", apoderados.size());
 
         return apoderados;
 
@@ -62,10 +60,10 @@ public class ApoderadoServiceImpl implements ApoderadoService {
         FamiliaresEntity apo = familiaresRepository.findByRut(rut);
         apoderado.setRut(apo.getRut());
         apoderado.setNombres(apo.getNombres());
-        apoderado.setApellidoPaterno(apo.getApPaterno());
-        apoderado.setApellidoMaterno(apo.getApMaterno());
-        apoderado.setFechaNacimiento(apo.getFamiNacimiento());
-        apoderado.setEstadoCivil(apo.getFamiEstadoCivil());
+        apoderado.setApellidoPaterno(StringUtils.capitalize(apo.getApellidoPaterno().toLowerCase()));
+        apoderado.setApellidoMaterno(apo.getApellidoMaterno());
+        apoderado.setFechaNacimiento(apo.getFechaNacimiento());
+        apoderado.setEstadoCivil(apo.getEstadoCivil());
 
         List<TelefonosEntity> telefonosEntity = telefonoRepository.findByRut(rut);
 
@@ -92,12 +90,12 @@ public class ApoderadoServiceImpl implements ApoderadoService {
                 Calendar c = Calendar.getInstance();
                 c.setTime(dataIn);
                 c.add(Calendar.DATE, 1);
-                apo.setFamiNacimiento(new java.sql.Date(c.getTime().getTime()));
+                apo. setFechaNacimiento(new java.sql.Date(c.getTime().getTime()));
             }
-            apo.setFamiEstadoCivil(apoderado.getEstadoCivil());
+            apo.setEstadoCivil(apoderado.getEstadoCivil());
             apo.setNombres(apoderado.getNombres());
-            apo.setApPaterno(apoderado.getApellidoPaterno());
-            apo.setFamiCorreo(apoderado.getCorreo());
+            apo.setApellidoPaterno(apoderado.getApellidoPaterno());
+            apo.setCorreo(apoderado.getCorreo());
         }
     }
 

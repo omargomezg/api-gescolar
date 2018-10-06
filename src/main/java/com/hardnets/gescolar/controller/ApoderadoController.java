@@ -25,7 +25,9 @@ public class ApoderadoController {
 
     @GetMapping("/{rut}")
     Apoderado showFiltered(@PathVariable String rut) {
-        return apoderadoService.getApoderado(rut);
+        return 
+
+   apoderadoService.getApoderado(rut);
     }
 
     @PostMapping
