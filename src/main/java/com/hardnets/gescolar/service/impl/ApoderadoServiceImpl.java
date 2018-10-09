@@ -1,5 +1,10 @@
 package com.hardnets.gescolar.service.impl;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+
 import com.hardnets.gescolar.domain.dto.Apoderado;
 import com.hardnets.gescolar.domain.dto.Telefono;
 import com.hardnets.gescolar.entity.FamiliaresEntity;
@@ -7,56 +12,62 @@ import com.hardnets.gescolar.entity.TelefonosEntity;
 import com.hardnets.gescolar.repository.FamiliaresRepository;
 import com.hardnets.gescolar.repository.TelefonoRepository;
 import com.hardnets.gescolar.service.ApoderadoService;
-import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.core.convert.ConversionService;
 import org.springframework.core.convert.TypeDescriptor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
-import java.util.*;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@RequiredArgsConstructor
 @Service
 @Slf4j
 public class ApoderadoServiceImpl implements ApoderadoService {
-    Apoderado apoderado = new Apoderado();
-    private FamiliaresRepository familiaresRepository;
+    private final FamiliaresRepository familiaresRepository;
     private ConversionService conversionService;
     private TelefonoRepository telefonoRepository;
 
-    public ApoderadoServiceImpl(FamiliaresRepository familiaresRepository,
-                                TelefonoRepository telefonoRepository,
-                                ConversionService conversionService) {
-        this.familiaresRepository = familiaresRepository;
-        this.telefonoRepository = telefonoRepository;
-        this.conversionService = conversionService;
-    }
+    /*
+     * public ApoderadoServiceImpl(FamiliaresRepository familiaresRepository,
+     * TelefonoRepository telefonoRepository, ConversionService conversionService) {
+     * this.familiaresRepository = familiaresRepository; this.telefonoRepository =
+     * telefonoRepository; this.conversionService = conversionService; }
+     */
 
     @Override
+    @SuppressWarnings("unchecked")
+    @Transactional(readOnly = true)
     public List<Apoderado> getApoderados() {
 
         log.info("Consulta apoderados");
         List<FamiliaresEntity> familiaresEntities = familiaresRepository.findAll();
-        List<Apoderado> apoderados = new ArrayList<>();
-        TypeDescriptor sourceType = TypeDescriptor.collection(List.class, TypeDescriptor.valueOf(FamiliaresEntity.class));
+        // List<Apoderado> apoderados = new ArrayList<>();
+        TypeDescriptor sourceType = TypeDescriptor.collection(List.class,
+                TypeDescriptor.valueOf(FamiliaresEntity.class));
         TypeDescriptor targetType = TypeDescriptor.collection(List.class, TypeDescriptor.valueOf(Apoderado.class));
 
-        for (FamiliaresEntity item : familiaresEntities) {
-            apoderado.setRut(item.getRut());
-            apoderado.setNombres(item.getNombres());
-            apoderado.setApellidoPaterno(item.getApellidoPaterno());
-            apoderado.setApellidoMaterno(item.getApellidoMaterno());
-            apoderados.add(apoderado);
-        }
+        log.info("Obtuvo {} registros", familiaresEntities.size());
+        return (List<Apoderado>) conversionService.convert(familiaresEntities, sourceType, targetType);
 
-        log.info("Se han encontrado {} registros", apoderados.size());
+        /*
+         * for (FamiliaresEntity item : familiaresEntities) {
+         * apoderado.setRut(item.getRut()); apoderado.setNombres(item.getNombres());
+         * apoderado.setApellidoPaterno(item.getApellidoPaterno());
+         * apoderado.setApellidoMaterno(item.getApellidoMaterno());
+         * apoderados.add(apoderado); }
+         */
+        // log.info("Se han encontrado {} registros", apoderados.size());
 
-        return apoderados;
+        // return apoderados;
 
     }
 
     @Override
     public Apoderado getApoderado(String rut) {
+        Apoderado apoderado = new Apoderado();
         FamiliaresEntity apo = familiaresRepository.findByRut(rut);
         apoderado.setRut(apo.getRut());
         apoderado.setNombres(apo.getNombres());
@@ -85,12 +96,12 @@ public class ApoderadoServiceImpl implements ApoderadoService {
     public void updApoderado(Apoderado apoderado, String rut) {
         FamiliaresEntity apo = familiaresRepository.findByRut(rut);
         if (apo != null) {
-            if(apoderado.getFechaNacimiento()!= null) {
+            if (apoderado.getFechaNacimiento() != null) {
                 Date dataIn = new Date(apoderado.getFechaNacimiento().getTime());
                 Calendar c = Calendar.getInstance();
                 c.setTime(dataIn);
                 c.add(Calendar.DATE, 1);
-                apo. setFechaNacimiento(new java.sql.Date(c.getTime().getTime()));
+                apo.setFechaNacimiento(new java.sql.Date(c.getTime().getTime()));
             }
             apo.setEstadoCivil(apoderado.getEstadoCivil());
             apo.setNombres(apoderado.getNombres());

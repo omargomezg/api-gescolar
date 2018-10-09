@@ -1,70 +1,39 @@
 package com.hardnets.gescolar.entity;
 
 import javax.persistence.*;
+
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Collection;
 import java.util.Objects;
 
 @Entity
 @Table(name = "TB_SCHM_Parametros", schema = "dbo")
+@Getter
+@Setter
 public class ParametrosEntity {
-    private Long paraId;
-    private short idGrupo;
-    private short idDetalle;
-    private String paraDescripcion;
-    private Boolean paraEstado;
-    private Collection<ServiciosEntity> tbSchmServiciosByParaId;
-    private Collection<FamiliaresEntity> tbSchpFamiliaresByParaId;
-    private Collection<FamiliaresEntity> tbSchpFamiliaresByParaId_0;
-
     @Id
     @Column(name = "PARA_Id", columnDefinition = "int")
-    public Long getParaId() {
-        return paraId;
-    }
-
-    public void setParaId(Long paraId) {
-        this.paraId = paraId;
-    }
-
+    private Long paraId;
     @Basic
     @Column(name = "PARA_Grupo")
-    public short getIdGrupo() {
-        return idGrupo;
-    }
-
-    public void setIdGrupo(short idGrupo) {
-        this.idGrupo = idGrupo;
-    }
-
+    private short idGrupo;
     @Basic
     @Column(name = "PARA_Detalle")
-    public short getIdDetalle() {
-        return idDetalle;
-    }
-
-    public void setIdDetalle(short detalle) {
-        this.idDetalle = idDetalle;
-    }
-
+    private short idDetalle;
     @Basic
     @Column(name = "PARA_Descripcion", columnDefinition = "nvarchar(200)")
-    public String getParaDescripcion() {
-        return paraDescripcion;
-    }
-
-    public void setParaDescripcion(String paraDescripcion) {
-        this.paraDescripcion = paraDescripcion;
-    }
-
+    private String paraDescripcion;
     @Basic
     @Column(name = "PARA_Estado")
-    public Boolean getParaEstado() {
-        return paraEstado;
-    }
-
-    public void setParaEstado(Boolean paraEstado) {
-        this.paraEstado = paraEstado;
-    }
+    private Boolean paraEstado;
+    @OneToMany(mappedBy = "tbSchmParametrosByServTipo")
+    private Collection<ServiciosEntity> tbSchmServiciosByParaId;
+    @OneToMany(mappedBy = "tbSchmParametrosByFamiEstadoCivil")
+    private Collection<FamiliaresEntity> tbSchpFamiliaresByParaId;
+    @OneToMany(mappedBy = "tbSchmParametrosByFamiParentesco")
+    private Collection<FamiliaresEntity> tbSchpFamiliaresByParaId_0;
 
     @Override
     public boolean equals(Object o) {
@@ -81,32 +50,5 @@ public class ParametrosEntity {
     @Override
     public int hashCode() {
         return Objects.hash(paraId, idGrupo, idDetalle, paraDescripcion, paraEstado);
-    }
-
-    @OneToMany(mappedBy = "tbSchmParametrosByServTipo")
-    public Collection<ServiciosEntity> getTbSchmServiciosByParaId() {
-        return tbSchmServiciosByParaId;
-    }
-
-    public void setTbSchmServiciosByParaId(Collection<ServiciosEntity> tbSchmServiciosByParaId) {
-        this.tbSchmServiciosByParaId = tbSchmServiciosByParaId;
-    }
-
-    @OneToMany(mappedBy = "tbSchmParametrosByFamiEstadoCivil")
-    public Collection<FamiliaresEntity> getTbSchpFamiliaresByParaId() {
-        return tbSchpFamiliaresByParaId;
-    }
-
-    public void setTbSchpFamiliaresByParaId(Collection<FamiliaresEntity> tbSchpFamiliaresByParaId) {
-        this.tbSchpFamiliaresByParaId = tbSchpFamiliaresByParaId;
-    }
-
-    @OneToMany(mappedBy = "tbSchmParametrosByFamiParentesco")
-    public Collection<FamiliaresEntity> getTbSchpFamiliaresByParaId_0() {
-        return tbSchpFamiliaresByParaId_0;
-    }
-
-    public void setTbSchpFamiliaresByParaId_0(Collection<FamiliaresEntity> tbSchpFamiliaresByParaId_0) {
-        this.tbSchpFamiliaresByParaId_0 = tbSchpFamiliaresByParaId_0;
     }
 }

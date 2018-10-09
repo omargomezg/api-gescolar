@@ -18,7 +18,7 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
     @Bean
     public Docket gescolarApi() {
         return new Docket(DocumentationType.SWAGGER_2).select()
-                .apis(RequestHandlerSelectors.basePackage("package com.hardnets.gescolar.controller")).paths(regex("/postulacion.*"))
+                .apis(RequestHandlerSelectors.basePackage("com.hardnets.gescolar.controller")).paths(regex("/.*"))
                 .build();
     }
 
