@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -37,13 +38,16 @@ public class PostulacionServiceImpl implements PostulacionService {
         List<Postulacion> postulaciones = new ArrayList<>();
         for (PostulacionEntity item : postulacionEntities) {
             AlumnoEntity alumnoEntity = alumnoRepository.findByRut(item.getAlumno());
-            FamiliaresEntity apoderadoEntity = familiaresRepository.findByRut(alumnoEntity.getAlmnApoderado());
+            Optional<FamiliaresEntity> apoderadoEntity = familiaresRepository.findByRut(alumnoEntity.getAlmnApoderado());
             Alumno alumno = new Alumno(alumnoEntity.getRut(), alumnoEntity.getNombres(),
                     alumnoEntity.getApellidoPaterno(), alumnoEntity.getApellidoMaterno());
-            ApoderadoPostulacion apoderado = new ApoderadoPostulacion(apoderadoEntity.getRut(),
-                    apoderadoEntity.getNombres(), apoderadoEntity.getApellidoPaterno(),
-                    apoderadoEntity.getApellidoMaterno());
-
+            ApoderadoPostulacion apoderado = new ApoderadoPostulacion();
+            if (apoderadoEntity.isPresent()) {
+                apoderadoEntity.get().getRut();
+                apoderadoEntity.get().getNombres();
+                apoderadoEntity.get().getApellidoPaterno();
+                apoderadoEntity.get().getApellidoMaterno();
+            }
             postulaciones.add(new Postulacion(item.getId(), item.getYear(),
                     item.getTbSchpClaseByPostCursoPostulado().getTbSchmCursosByClasCurso().getCursDescripcion(),
                     item.getTbSchmCursosByPostCursando().getCursDescripcion(), item.getPostColegio(),
@@ -53,7 +57,7 @@ public class PostulacionServiceImpl implements PostulacionService {
         }
 
         log.info("Obtiene {} registros", postulaciones.size());
-        
+
         return postulaciones;
     }
 }

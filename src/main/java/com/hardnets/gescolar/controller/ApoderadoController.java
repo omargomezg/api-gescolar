@@ -4,8 +4,10 @@ import java.util.List;
 
 import com.hardnets.gescolar.domain.UserModel;
 import com.hardnets.gescolar.domain.dto.Apoderado;
+import com.hardnets.gescolar.domain.response.ListaApoderados;
 import com.hardnets.gescolar.service.ApoderadoService;
 
+import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,23 +27,20 @@ public class ApoderadoController {
         this.apoderadoService = apoderadoService;
     }
 
-    ///
+    @ApiOperation(value = "Return list of agents")
     @GetMapping
-    List<Apoderado> showAll() {
+    List<ListaApoderados> showAll() {
         return apoderadoService.getApoderados();
     }
 
     @GetMapping("/{rut}")
     Apoderado showFiltered(@PathVariable String rut) {
-        return 
-
-   apoderadoService.getApoderado(rut);
+        return apoderadoService.getApoderado(rut);
     }
 
     @PostMapping
-    UserModel newData(@RequestBody UserModel data) {
-        data.id = data.id + 23;
-        return data;
+    void addNewAgent(@RequestBody Apoderado data) {
+        apoderadoService.addNewAgent(data);
     }
 
     @PutMapping("/{rut}")

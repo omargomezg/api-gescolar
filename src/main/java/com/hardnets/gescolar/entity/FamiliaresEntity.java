@@ -27,6 +27,7 @@ import lombok.Setter;
         value = {"createdAt", "updatedAt"},
         allowGetters = true
 )*/
+@SuppressWarnings("serial")
 public class FamiliaresEntity implements Serializable {
     
     @Id
@@ -46,10 +47,10 @@ public class FamiliaresEntity implements Serializable {
     private Date fechaNacimiento;
     @Basic
     @Column(name = "FAMI_EstadoCivil")
-    private Integer EstadoCivil;
+    private Integer estadoCivil;
     @Basic
     @Column(name = "FAMI_Correo", columnDefinition = "varchar(200)")
-    private String Correo;
+    private String correo;
     @Basic
     @Column(name = "FAMI_Genero", columnDefinition = "nchar(1)")
     private String Genero;
@@ -67,7 +68,7 @@ public class FamiliaresEntity implements Serializable {
     private String telefonoFijo;
     @Basic
     @Column(name = "FAMI_Movil", columnDefinition = "nvarchar(15)")
-    private String famiMovil;
+    private String telefonoMovil;
     @OneToMany(mappedBy = "tbSchpFamiliaresByAlmnApoderado")
     private Collection<AlumnoEntity> tbSchpAlumnosByFamiRut;
     @ManyToOne
@@ -92,20 +93,20 @@ public class FamiliaresEntity implements Serializable {
                 Objects.equals(apellidoPaterno, that.apellidoPaterno) &&
                 Objects.equals(apellidoMaterno, that.apellidoMaterno) &&
                 Objects.equals(fechaNacimiento, that.fechaNacimiento) &&
-                Objects.equals(EstadoCivil, that.EstadoCivil) &&
-                Objects.equals(Correo, that.Correo) &&
+                Objects.equals(estadoCivil, that.estadoCivil) &&
+                Objects.equals(correo, that.correo) &&
                 Objects.equals(Genero, that.Genero) &&
                 Objects.equals(GrupoFamiliar, that.GrupoFamiliar) &&
                 Objects.equals(parentesco, that.parentesco) &&
                 Objects.equals(profesion, that.profesion) &&
                 Objects.equals(telefonoFijo, that.telefonoFijo) &&
-                Objects.equals(famiMovil, that.famiMovil);
+                Objects.equals(telefonoMovil, that.telefonoMovil);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(rut, nombres, apellidoPaterno, apellidoMaterno, fechaNacimiento, EstadoCivil, Correo,
-                Genero, GrupoFamiliar, parentesco, profesion, telefonoFijo, famiMovil);
+        return Objects.hash(rut, nombres, apellidoPaterno, apellidoMaterno, fechaNacimiento, estadoCivil, correo,
+                Genero, GrupoFamiliar, parentesco, profesion, telefonoFijo, telefonoMovil);
     }   
    
 }

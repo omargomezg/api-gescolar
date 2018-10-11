@@ -1,16 +1,14 @@
 package com.hardnets.gescolar.domain.dto;
 
-import com.hardnets.gescolar.domain.dto.Telefono;
-import lombok.Getter;
-import lombok.AllArgsConstructor;
-import lombok.Setter;
-
 import java.util.Date;
-import java.util.List;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
+@NoArgsConstructor
 public class Apoderado {
     private String rut;
     private String nombres;
@@ -18,11 +16,9 @@ public class Apoderado {
     private String apellidoMaterno;
     private Date fechaNacimiento;
     private String correo;
+    private String genero;
+    private String profesion;
     private Integer estadoCivil;
-    private List<Telefono> telefonos;
-
-    public Apoderado() {    
-        // constructor
-    }
-
+    private String telefonoFijo;
+    private String telefonoMovil;
 }

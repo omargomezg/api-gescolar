@@ -1,26 +1,26 @@
 package com.hardnets.gescolar.service.impl;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-
+import com.hardnets.gescolar.domain.ErrorCode;
 import com.hardnets.gescolar.domain.dto.Apoderado;
-import com.hardnets.gescolar.domain.dto.Telefono;
+import com.hardnets.gescolar.domain.response.ListaApoderados;
 import com.hardnets.gescolar.entity.FamiliaresEntity;
-import com.hardnets.gescolar.entity.TelefonosEntity;
+import com.hardnets.gescolar.exception.ResourceNotFoundException;
+import com.hardnets.gescolar.exception.StudentException;
 import com.hardnets.gescolar.repository.FamiliaresRepository;
 import com.hardnets.gescolar.repository.TelefonoRepository;
 import com.hardnets.gescolar.service.ApoderadoService;
-
+import com.hardnets.gescolar.utils.RutUtils;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.convert.ConversionService;
-import org.springframework.core.convert.TypeDescriptor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -38,75 +38,81 @@ public class ApoderadoServiceImpl implements ApoderadoService {
      */
 
     @Override
-    @SuppressWarnings("unchecked")
     @Transactional(readOnly = true)
-    public List<Apoderado> getApoderados() {
+    public List<ListaApoderados> getApoderados() {
 
         log.info("Consulta apoderados");
-        List<FamiliaresEntity> familiaresEntities = familiaresRepository.findAll();
-        // List<Apoderado> apoderados = new ArrayList<>();
-        TypeDescriptor sourceType = TypeDescriptor.collection(List.class,
-                TypeDescriptor.valueOf(FamiliaresEntity.class));
-        TypeDescriptor targetType = TypeDescriptor.collection(List.class, TypeDescriptor.valueOf(Apoderado.class));
+        List<ListaApoderados> apoderados = familiaresRepository.findAllApoderados();
 
-        log.info("Obtuvo {} registros", familiaresEntities.size());
-        return (List<Apoderado>) conversionService.convert(familiaresEntities, sourceType, targetType);
-
-        /*
-         * for (FamiliaresEntity item : familiaresEntities) {
-         * apoderado.setRut(item.getRut()); apoderado.setNombres(item.getNombres());
-         * apoderado.setApellidoPaterno(item.getApellidoPaterno());
-         * apoderado.setApellidoMaterno(item.getApellidoMaterno());
-         * apoderados.add(apoderado); }
-         */
-        // log.info("Se han encontrado {} registros", apoderados.size());
-
-        // return apoderados;
-
+        log.info("Obtuvo {} registros", apoderados.size());
+        return apoderados;
     }
 
     @Override
     public Apoderado getApoderado(String rut) {
         Apoderado apoderado = new Apoderado();
-        FamiliaresEntity apo = familiaresRepository.findByRut(rut);
-        apoderado.setRut(apo.getRut());
-        apoderado.setNombres(apo.getNombres());
-        apoderado.setApellidoPaterno(StringUtils.capitalize(apo.getApellidoPaterno().toLowerCase()));
-        apoderado.setApellidoMaterno(apo.getApellidoMaterno());
-        apoderado.setFechaNacimiento(apo.getFechaNacimiento());
-        apoderado.setEstadoCivil(apo.getEstadoCivil());
-
-        List<TelefonosEntity> telefonosEntity = telefonoRepository.findByRut(rut);
-
-        List<Telefono> telefonos = new ArrayList<>();
-        for (TelefonosEntity item : telefonosEntity) {
-            Telefono telefono = new Telefono();
-            telefono.setId(item.getId());
-            telefono.setNumero(item.getNumero());
-            telefono.setTipo(item.getTipo());
-            telefonos.add(telefono);
+        Optional<FamiliaresEntity> apo = familiaresRepository.findByRut(rut);
+        if (apo.isPresent()) {
+            apoderado.setRut(apo.get().getRut());
+            apoderado.setNombres(apo.get().getNombres());
+            apoderado.setApellidoPaterno(StringUtils.capitalize(apo.get().getApellidoPaterno().toLowerCase()));
+            apoderado.setApellidoMaterno(apo.get().getApellidoMaterno());
+            apoderado.setFechaNacimiento(apo.get().getFechaNacimiento());
+            apoderado.setEstadoCivil(apo.get().getEstadoCivil());
+            apoderado.setCorreo(apo.get().getCorreo());
+            apoderado.setTelefonoFijo(apo.get().getTelefonoFijo());
+            apoderado.setTelefonoMovil(apo.get().getTelefonoMovil());
         }
-        apoderado.setTelefonos(telefonos);
-
         return apoderado;
     }
 
     @Override
     @Transactional
+    public void addNewAgent(Apoderado model) {
+        String rut = model.getRut();
+        if (RutUtils.Validar(model.getRut())) {
+            FamiliaresEntity famEntity = new FamiliaresEntity();
+            Optional<FamiliaresEntity> familiar = familiaresRepository.findByRut(rut);
+            if (familiar.isPresent()) {
+                throw new ResourceNotFoundException(ErrorCode.FamiliaresEntity_NOT_FOUND);
+            } else {
+                Date dataIn = new Date(model.getFechaNacimiento().getTime());
+                Calendar c = Calendar.getInstance();
+                c.setTime(dataIn);
+                c.add(Calendar.DATE, 1);
+
+                famEntity.setRut(model.getRut());
+                famEntity.setNombres(model.getNombres());
+                famEntity.setApellidoPaterno(model.getApellidoPaterno());
+                famEntity.setApellidoMaterno(model.getApellidoMaterno());
+                famEntity.setFechaNacimiento(new java.sql.Date(c.getTime().getTime()));
+                famEntity.setEstadoCivil(model.getEstadoCivil());
+                famEntity.setGenero(model.getGenero().toUpperCase());
+                familiaresRepository.save(famEntity);
+            }
+        } else {
+            throw new StudentException(ErrorCode.INVALID_RUT);
+        }
+    }
+
+    @Override
+    @Transactional
     public void updApoderado(Apoderado apoderado, String rut) {
-        FamiliaresEntity apo = familiaresRepository.findByRut(rut);
-        if (apo != null) {
+        Optional<FamiliaresEntity> apo = familiaresRepository.findByRut(rut);
+        if (apo.isPresent()) {
             if (apoderado.getFechaNacimiento() != null) {
                 Date dataIn = new Date(apoderado.getFechaNacimiento().getTime());
                 Calendar c = Calendar.getInstance();
                 c.setTime(dataIn);
                 c.add(Calendar.DATE, 1);
-                apo.setFechaNacimiento(new java.sql.Date(c.getTime().getTime()));
+                apo.get().setFechaNacimiento(new java.sql.Date(c.getTime().getTime()));
             }
-            apo.setEstadoCivil(apoderado.getEstadoCivil());
-            apo.setNombres(apoderado.getNombres());
-            apo.setApellidoPaterno(apoderado.getApellidoPaterno());
-            apo.setCorreo(apoderado.getCorreo());
+            apo.get().setEstadoCivil(apoderado.getEstadoCivil());
+            apo.get().setNombres(apoderado.getNombres());
+            apo.get().setApellidoPaterno(apoderado.getApellidoPaterno());
+            apo.get().setCorreo(apoderado.getCorreo());
+        } else {
+            throw new StudentException(ErrorCode.FamiliaresEntity_NOT_FOUND);
         }
     }
 

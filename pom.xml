@@ -101,7 +101,8 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-        </plugins>
+        </plugins>        
+        <finalName>app-gescolar</finalName>
     </build>
 
 </project>

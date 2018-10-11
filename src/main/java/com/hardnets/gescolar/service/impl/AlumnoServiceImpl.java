@@ -1,24 +1,18 @@
 package com.hardnets.gescolar.service.impl;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
-
-import com.hardnets.gescolar.entity.AlumnoEntity;
 import com.hardnets.gescolar.domain.ErrorCode;
 import com.hardnets.gescolar.domain.dto.Alumno;
 import com.hardnets.gescolar.domain.request.AlumnoCreateRequest;
-import com.hardnets.gescolar.service.AlumnoService;
-import com.hardnets.gescolar.repository.AlumnoRepository;
-import com.hardnets.gescolar.utils.RutUtils;
+import com.hardnets.gescolar.entity.AlumnoEntity;
 import com.hardnets.gescolar.exception.StudentException;
-
+import com.hardnets.gescolar.repository.AlumnoRepository;
+import com.hardnets.gescolar.service.AlumnoService;
+import com.hardnets.gescolar.utils.RutUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import lombok.extern.slf4j.Slf4j;
+import java.util.*;
 
 @Service
 @Slf4j
@@ -37,7 +31,13 @@ public class AlumnoServiceImpl implements AlumnoService {
 
         for (AlumnoEntity item : alumnosEntity) {
             alumnos.add(
-                    new Alumno(item.getRut(), item.getNombres(), item.getApellidoPaterno(), item.getApellidoMaterno()));
+                    new Alumno(
+                            item.getRut(),
+                            item.getNombres(),
+                            item.getApellidoPaterno(),
+                            item.getApellidoMaterno()
+                    )
+            );
         }
 
         log.info("Se han encontrado {} registros", alumnos.size());
@@ -48,7 +48,7 @@ public class AlumnoServiceImpl implements AlumnoService {
     @Transactional
     public void postData(AlumnoCreateRequest data) {
         String rut = data.getRut();
-        if(RutUtils.Validar(data.getRut())){
+        if (RutUtils.Validar(data.getRut())) {
             Optional<AlumnoEntity> arAE = alumnoRepository.findById(rut);
             if (arAE.isPresent()) {
                 updateStudent(data, arAE);
