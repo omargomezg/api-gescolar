@@ -12,7 +12,7 @@ public class AlumnoEntity {
     private String nombres;
     private String apellidoPaterno;
     private String apellidoMaterno;
-    private Date almnNacimiento;
+    private Date fechaNacimiento;
     private Short almnDomicilio;
     private String almnEstado;
     private String almnGenero;
@@ -70,12 +70,12 @@ public class AlumnoEntity {
 
     @Basic
     @Column(name = "ALMN_Nacimiento")
-    public Date getAlmnNacimiento() {
-        return almnNacimiento;
+    public Date getFechaNacimiento() {
+        return fechaNacimiento;
     }
 
-    public void setAlmnNacimiento(Date almnNacimiento) {
-        this.almnNacimiento = almnNacimiento;
+    public void setFechaNacimiento(Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
 
     @Basic
@@ -127,7 +127,7 @@ public class AlumnoEntity {
                 Objects.equals(nombres, that.nombres) &&
                 Objects.equals(apellidoPaterno, that.apellidoPaterno) &&
                 Objects.equals(apellidoMaterno, that.apellidoMaterno) &&
-                Objects.equals(almnNacimiento, that.almnNacimiento) &&
+                Objects.equals(fechaNacimiento, that.fechaNacimiento) &&
                 Objects.equals(almnDomicilio, that.almnDomicilio) &&
                 Objects.equals(almnEstado, that.almnEstado) &&
                 Objects.equals(almnGenero, that.almnGenero) &&
@@ -136,7 +136,7 @@ public class AlumnoEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(rut, nombres, apellidoPaterno, apellidoMaterno, almnNacimiento, almnDomicilio, almnEstado, almnGenero, almnApoderado);
+        return Objects.hash(rut, nombres, apellidoPaterno, apellidoMaterno, fechaNacimiento, almnDomicilio, almnEstado, almnGenero, almnApoderado);
     }
 
     @OneToMany(mappedBy = "tbSchpAlumnoByAcurAlumno")

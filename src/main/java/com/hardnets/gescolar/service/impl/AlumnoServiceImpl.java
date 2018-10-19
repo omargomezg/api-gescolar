@@ -1,8 +1,8 @@
 package com.hardnets.gescolar.service.impl;
 
 import com.hardnets.gescolar.domain.ErrorCode;
-import com.hardnets.gescolar.domain.dto.Alumno;
 import com.hardnets.gescolar.domain.request.AlumnoCreateRequest;
+import com.hardnets.gescolar.domain.response.StudentList;
 import com.hardnets.gescolar.entity.AlumnoEntity;
 import com.hardnets.gescolar.exception.StudentException;
 import com.hardnets.gescolar.repository.AlumnoRepository;
@@ -25,23 +25,11 @@ public class AlumnoServiceImpl implements AlumnoService {
     }
 
     @Override
-    public List<Alumno> getAll() {
-        List<AlumnoEntity> alumnosEntity = alumnoRepository.findAll();
-        List<Alumno> alumnos = new ArrayList<>();
+    public List<StudentList> getAll() {
+        List<StudentList> alumnosEntity = alumnoRepository.findAllStudents();
 
-        for (AlumnoEntity item : alumnosEntity) {
-            alumnos.add(
-                    new Alumno(
-                            item.getRut(),
-                            item.getNombres(),
-                            item.getApellidoPaterno(),
-                            item.getApellidoMaterno()
-                    )
-            );
-        }
-
-        log.info("Se han encontrado {} registros", alumnos.size());
-        return alumnos;
+        log.info("Se han encontrado {} registros", alumnosEntity.size());
+        return alumnosEntity;
     }
 
     @Override
@@ -64,7 +52,7 @@ public class AlumnoServiceImpl implements AlumnoService {
                 alumno.setNombres(data.getNombres());
                 alumno.setApellidoMaterno(data.getApellidoMaterno());
                 alumno.setApellidoPaterno(data.getApellidoPaterno());
-                alumno.setAlmnNacimiento(new java.sql.Date(c.getTime().getTime()));
+                alumno.setFechaNacimiento(new java.sql.Date(c.getTime().getTime()));
                 alumno.setAlmnEstado(data.getEstado());
                 alumno.setAlmnGenero(data.getGenero());
                 alumnoRepository.save(alumno);

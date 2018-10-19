@@ -3,10 +3,10 @@ package com.hardnets.gescolar.service;
 import java.util.List;
 
 import com.hardnets.gescolar.domain.request.AlumnoCreateRequest;
-import com.hardnets.gescolar.domain.dto.Alumno;
+import com.hardnets.gescolar.domain.response.StudentList;
 
 
 public interface AlumnoService {
-    List<Alumno> getAll();
+    List<StudentList> getAll();
     void postData(AlumnoCreateRequest data);
 }

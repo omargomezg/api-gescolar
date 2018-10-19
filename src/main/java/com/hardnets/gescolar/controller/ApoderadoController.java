@@ -2,9 +2,8 @@ package com.hardnets.gescolar.controller;
 
 import java.util.List;
 
-import com.hardnets.gescolar.domain.UserModel;
 import com.hardnets.gescolar.domain.dto.Apoderado;
-import com.hardnets.gescolar.domain.response.ListaApoderados;
+import com.hardnets.gescolar.domain.response.AgentList;
 import com.hardnets.gescolar.service.ApoderadoService;
 
 import io.swagger.annotations.ApiOperation;
@@ -18,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/apoderado", produces = "application/json")
+@RequestMapping(value = "/api/apoderado", produces = "application/json")
 public class ApoderadoController {
 
     private ApoderadoService apoderadoService;
@@ -29,7 +28,7 @@ public class ApoderadoController {
 
     @ApiOperation(value = "Return list of agents")
     @GetMapping
-    List<ListaApoderados> showAll() {
+    List<AgentList> showAll() {
         return apoderadoService.getApoderados();
     }
 

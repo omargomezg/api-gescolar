@@ -2,17 +2,15 @@ package com.hardnets.gescolar.service.impl;
 
 import com.hardnets.gescolar.domain.ErrorCode;
 import com.hardnets.gescolar.domain.dto.Apoderado;
-import com.hardnets.gescolar.domain.response.ListaApoderados;
+import com.hardnets.gescolar.domain.response.AgentList;
 import com.hardnets.gescolar.entity.FamiliaresEntity;
 import com.hardnets.gescolar.exception.ResourceNotFoundException;
 import com.hardnets.gescolar.exception.StudentException;
 import com.hardnets.gescolar.repository.FamiliaresRepository;
-import com.hardnets.gescolar.repository.TelefonoRepository;
 import com.hardnets.gescolar.service.ApoderadoService;
 import com.hardnets.gescolar.utils.RutUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
@@ -27,8 +25,8 @@ import java.util.Optional;
 @Slf4j
 public class ApoderadoServiceImpl implements ApoderadoService {
     private final FamiliaresRepository familiaresRepository;
-    private ConversionService conversionService;
-    private TelefonoRepository telefonoRepository;
+    // private ConversionService conversionService;
+    // private TelefonoRepository telefonoRepository;
 
     /*
      * public ApoderadoServiceImpl(FamiliaresRepository familiaresRepository,
@@ -39,10 +37,10 @@ public class ApoderadoServiceImpl implements ApoderadoService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<ListaApoderados> getApoderados() {
+    public List<AgentList> getApoderados() {
 
         log.info("Consulta apoderados");
-        List<ListaApoderados> apoderados = familiaresRepository.findAllApoderados();
+        List<AgentList> apoderados = familiaresRepository.findAllAgents();
 
         log.info("Obtuvo {} registros", apoderados.size());
         return apoderados;

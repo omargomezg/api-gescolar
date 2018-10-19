@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "estado-civil", produces = "application/json")
+@RequestMapping(value = "/api/estado-civil", produces = "application/json")
 public class EstadoCivilController {
 
     private EstadoCivilService estadoCivilService;
